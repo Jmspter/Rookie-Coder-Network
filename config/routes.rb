@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  resources :articles
   devise_for :users
   root "static_pages#home"
   get "/courses" => "static_pages#courses"
+  get "/about" => "static_pages#about"
 
   get 'quiz/question', to: 'quiz#question'
   post 'quiz/answer', to: 'quiz#answer'

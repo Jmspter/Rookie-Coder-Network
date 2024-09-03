@@ -4,6 +4,7 @@
     <title><%= content_for(:title) || "Rookie Coder Network" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= favicon_link_tag asset_path('favicon.ico') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,16 +14,19 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body class="bg-gray-950 text-white">
-    <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <main class="bg-gray-950 text-white">
       <%= render 'layouts/nav' %>
+      <% if notice.present? %>
+        <p class="py-2 px-3 bg-green-600 text-green-100 font-medium rounded-lg mb-5" id="notice"><%= notice %></p>
+      <% end %>
       <%= yield %>
       <%= render 'layouts/footer' %>
     </main>

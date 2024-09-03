@@ -1,6 +1,6 @@
   <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-      <%= image_tag "rokie", class:"mx-auto h-10 w-auto" %>
+      <%= image_tag "rokie.png", class:"mx-auto h-10 w-auto" %>
       <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-50">Faça login na sua conta</h2>
     </div>
   
@@ -17,7 +17,7 @@
         <div>
           <div class="flex items-center justify-between">
             <%= f.label :password, 'Senha', class:"block text-sm font-medium leading-6 text-gray-50" %>
-            <div class="text-sm">
+            <div class="text-sm hidden">
               <%= link_to "Esqueceu sua senha?", new_password_path(resource_name), class:"font-semibold text-lime-600 hover:text-lime-500" %>
             </div>
           </div>

@@ -6,4 +6,7 @@ class StaticPagesController < ApplicationController
   def courses
     @active_nav_item = 'courses'
   end
+  def about
+    @active_nav_item = 'about'
+  end
 end

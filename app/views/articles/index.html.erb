@@ -1,0 +1,31 @@
+<div class="w-3/4 text-white h-screen ml-5">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <% content_for :title, "Articles" %>
+
+  <h1 class="font-bold text-4xl">Network</h1>
+
+  <%= form_with url: articles_path, method: :get, local: true, class: "my-5" do %>
+    <%= select_tag :category, options_for_select(Article::CATEGORIES, params[:category]), prompt: "Filtrar por categoria", class: "bg-zinc-700 text-white rounded-md py-2 px-4" %>
+    <%= submit_tag 'Filtrar', class: "ml-2 bg-lime-600 text-white rounded-md py-2 px-4" %>
+  <% end %>
+
+  <div id="articles" class="min-w-full">
+    <% @articles.each do |article| %>
+      <div class="my-5 p-4 bg-zinc-700 rounded-md">
+        <h2 class="text-2xl font-bold"><%= article.title %></h2>
+        <p class="text-zinc-400">Autor: <%= article.user.name %></p>
+        <p>
+          <%= link_to "Ler artigo", article, class: "my-2 rounded-lg py-2 px-4 bg-lime-600 text-white inline-block font-medium" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to new_article_path, class: "fixed bottom-5 right-5 bg-lime-600 text-white rounded-full p-4 shadow-lg hover:bg-lime-700 focus:outline-none focus:ring-2 focus:ring-lime-500" do %>
+    <i class="fas fa-pencil-alt"></i>
+  <% end %>
+
+</div>
