@@ -15,10 +15,14 @@
     <%= form.text_field :title, class: "block shadow-sm rounded-md border border-zinc-600 bg-zinc-800 text-white outline-none px-3 py-2 mt-2 w-full focus:ring-2 focus:ring-lime-500" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :content, 'Conteúdo', class: "block text-zinc-200 font-medium" %>
-    <%= form.text_area :content, rows: 10, class: "block shadow-sm rounded-md border border-zinc-600 bg-zinc-800 text-white outline-none px-3 py-2 mt-2 w-full focus:ring-2 focus:ring-lime-500" %>
-  </div>
+<div class="my-5">
+  <%= form.label :content, 'Conteúdo', class: "block text-zinc-200 font-medium mb-2" %>
+  <%= form.rich_text_area :content, 
+      rows: 10, 
+      class: "block w-full px-4 py-3 mt-2 text-zinc-200 bg-zinc-800 border border-zinc-600 rounded-md shadow-sm focus:ring focus:ring-lime-500 focus:border-lime-500 
+      focus:outline-none resize-none" %>
+</div>
+
 
   <div class="my-5">
     <%= form.label :category, 'categoria', class: "block text-zinc-200 font-medium" %>

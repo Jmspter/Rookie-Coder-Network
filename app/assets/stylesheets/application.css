@@ -1,15 +1,46 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@import 'actiontext.css';
+
+/* Estilizando o fundo e o texto do editor */
+trix-editor {
+    background-color: #1e1e1e;
+    /* Cor de fundo escura */
+    color: #d4d4d4;
+    /* Cor do texto clara */
+}
+
+/* Estilizando a barra de ferramentas */
+trix-toolbar {
+    border: none;
+    /* Remover a borda se necessário */
+}
+
+/* Estilizando os ícones do FontAwesome */
+trix-toolbar .trix-button-icon i {
+    color: #d4d4d4;
+    /* Cor dos ícones */
+    font-size: 1rem;
+    /* Ajuste o tamanho se necessário */
+}
+
+trix-toolbar .trix-button-group button {
+    background-color: whitesmoke;
+}
+
+trix-toolbar .trix-button--icon-bullet-list {
+    display: none !important;
+}
+
+/* Ocultar o botão de lista numerada (numbers) */
+trix-toolbar .trix-button--icon-number-list {
+    display: none !important;
+}
+
+/* Ocultar o botão de diminuir nível (decrease level) */
+trix-toolbar .trix-button--icon-decrease-indent {
+    display: none !important;
+}
+
+/* Ocultar o botão de aumentar nível (increase level) */
+trix-toolbar .trix-button--icon-increase-indent {
+    display: none !important;
+}
