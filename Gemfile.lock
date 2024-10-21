@@ -80,7 +80,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
-    brakeman (6.2.1)
+    brakeman (6.2.2)
       racc
     builder (3.3.0)
     capybara (3.40.0)
@@ -108,6 +108,7 @@ GEM
     drb (2.2.1)
     erubi (1.13.0)
     ffi (1.17.0-x64-mingw-ucrt)
+    ffi (1.17.0-x86_64-linux-gnu)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.5)
