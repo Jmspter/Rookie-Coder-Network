@@ -21,11 +21,23 @@
   </head>
 
   <body class="bg-gray-950 text-white">
-    <p class="alert"><%= alert %></p>
     <main class="bg-gray-950 text-white">
       <%= render 'layouts/nav' %>
+      <% if alert.present? %>
+        <div class="relative py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium rounded-lg inline-block" id="alert">
+          <span><%= alert %></span>
+          <button class="absolute top-0 right-0 mt-1 mr-1 text-red-500 hover:text-red-700 text-2xl leading-none" onclick="document.getElementById('alert').style.display = 'none';">
+            &times;
+          </button>
+        </div>
+      <% end %>
       <% if notice.present? %>
-        <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+        <div class="relative py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice">
+          <span class="pr-2"><%= notice %></span>
+          <button class="absolute top-0 right-0 mt-1 mr-1 text-green-500 hover:text-green-700 text-2xl leading-none" onclick="document.getElementById('notice').style.display = 'none';">
+            &times;
+          </button>
+        </div>
       <% end %>
       <%= yield %>
       <%= render 'layouts/footer' %>
