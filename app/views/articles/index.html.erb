@@ -1,17 +1,18 @@
-<div class="w-3/4 text-white h-screen ml-5">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
+
 
   <% content_for :title, "Articles" %>
 
-  <h1 class="font-bold text-4xl">Network</h1>
+  <h1 class="font-bold text-4xl text-center">Network</h1>
 
-  <%= form_with url: articles_path, method: :get, local: true, class: "my-5" do %>
-    <%= select_tag :category, options_for_select(Article::CATEGORIES, params[:category]), prompt: "Filtrar por categoria", class: "bg-zinc-700 text-white rounded-md py-2 px-4" %>
-    <%= submit_tag 'Filtrar', class: "ml-2 bg-lime-600 text-white rounded-md py-2 px-4" %>
+  <%= form_with url: articles_path, method: :get, local: true, class: "my-5 mx-5" do %>
+    <%= select_tag :category, options_for_select(Article::CATEGORIES, params[:category]), prompt: "Filtrar por categoria", id: "category_select", class: "bg-zinc-700 text-white rounded-md py-2 px-4" %>
+    <%= submit_tag 'Filtrar', id: "filter_button", class: "ml-2 bg-lime-600 text-white rounded-md py-2 px-4", disabled: true %>
+    
+    <% if params[:category].present? %>
+      <%= link_to 'Limpar', articles_path, class: "ml-2 bg-red-600 text-white rounded-md py-2 px-4" %>
+    <% end %>
   <% end %>
-
+<div class="w-3/4 text-white h-screen ml-5">
   <div id="articles" class="min-w-full">
     <% @articles.each do |article| %>
       <div class="my-5 p-4 bg-zinc-700 rounded-md">
@@ -29,3 +30,19 @@
   <% end %>
 
 </div>
+
+<script type="module">
+  document.addEventListener('turbo:load', () => {
+    const select = document.getElementById('category_select');
+    const filterButton = document.getElementById('filter_button');
+
+    select.addEventListener('change', () => {
+      if (select.value) {
+        filterButton.disabled = false;
+      } else {
+        filterButton.disabled = true;
+      }
+    });
+  });
+</script>
+

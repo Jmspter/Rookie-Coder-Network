@@ -23,7 +23,6 @@
           </div>
           <div class="mt-2 relative">
             <%= f.password_field :password, id: "password-field", autocomplete: "current-password", class:"block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-lime-600 sm:text-sm sm:leading-6 pr-10" %>
-
           </div>
         </div>
 
@@ -55,7 +54,6 @@
     const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
     passwordField.setAttribute("type", type);
 
-    // Alterna o ícone do olho aberto para o olho fechado
     if (type === "text") {
       eyeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0012 19c-4.478 0-8.268-2.943-9.542-7a10.05 10.05 0 01.083-2.625M10.125 5.175A9.97 9.97 0 0112 5c4.478 0 8.268 2.943 9.542 7a10.05 10.05 0 01-.083 2.625M9.878 14.121A3 3 0 1115 9m-5.293 5.293L9.878 14.12z" />`;
     } else {
