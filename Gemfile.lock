@@ -313,7 +313,7 @@ DEPENDENCIES
   capybara
   debug
   devise
-  image_processing (~> 1.2)
+  image_processing (~> 1.13)
   importmap-rails
   jbuilder
   pg (~> 1.1)
