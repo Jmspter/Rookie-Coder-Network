@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  resources :courses, only: [:index, :show]
+  resources :lessons do
+    post :unlock_next, on: :member
+  end
+  
   resources :articles
   devise_for :users
   root "static_pages#home"
-  get "/courses" => "static_pages#courses"
   get "/about" => "static_pages#about"
 
   get 'quiz/question', to: 'quiz#question'

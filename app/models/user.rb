@@ -1,7 +1,14 @@
 class User < ApplicationRecord
   has_many :articles
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_many :user_lessons
+
+  def completed?(lesson)
+    UserLesson.exists?(user: self, lesson: lesson, completed: true)
+  end
+
+  def unlocked?(lesson)
+    UserLesson.exists?(user: self, lesson: lesson)
+  end
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end

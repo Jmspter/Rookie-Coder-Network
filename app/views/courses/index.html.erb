@@ -1,0 +1,13 @@
+<div class="container mx-auto p-6">
+    <h1 class="text-4xl font-bold text-teal-600 text-center mb-8">Cursos</h1>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <% @courses.each do |course| %>
+            <div class="border border-slate-300 p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-200">
+                <h2 class="text-lg font-bold text-teal-600">
+                    <%= link_to course.name, course_path(course), class: "hover:underline" %>
+                </h2>
+                <p class="text-slate-700"><%= course.description %></p>
+            </div>
+        <% end %>
+    </div>
+</div>

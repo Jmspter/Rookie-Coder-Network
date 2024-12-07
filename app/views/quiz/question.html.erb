@@ -11,13 +11,13 @@
     <%= form_with url: quiz_answer_path, method: :post, class: "space-y-4" do %>
       <% @question_data[:options].each do |option| %>
         <div class="flex items-center">
-          <%= radio_button_tag :option, option, false, class: "form-radio h-4 w-4 text-lime-600 transition duration-150 ease-in-out focus:ring focus:ring-lime-500 focus:border-lime-500" %>
+          <%= radio_button_tag :option, option, false, class: "form-radio h-4 w-4 text-teal-600 transition duration-150 ease-in-out focus:ring focus:ring-teal-500 focus:border-teal-500" %>
           <%= label_tag :option, option, class: "ml-2 text-gray-50" %>
         </div>
       <% end %>
       
       <div class="mt-6">
-        <%= submit_tag "Responder", class: "bg-lime-600 text-white px-4 py-2 rounded-md hover:bg-lime-700 transition duration-200" %>
+        <%= submit_tag "Responder", class: "bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition duration-200" %>
       </div>
     <% end %>
   </div>
