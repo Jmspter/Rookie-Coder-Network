@@ -1,0 +1,9 @@
+<h1>Cursos Disponíveis</h1>
+
+<ul>
+  <% @cursos.each do |curso| %>
+    <li>
+      <%= link_to curso.nome, curso_path(curso) %> - <%= curso.descricao %>
+    </li>
+  <% end %>
+</ul>

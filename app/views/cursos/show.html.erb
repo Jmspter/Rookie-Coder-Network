@@ -1,0 +1,14 @@
+<h1><%= @curso.nome %></h1>
+<p><%= @curso.descricao %></p>
+
+<h2>Aulas</h2>
+<ul>
+  <% @curso.aulas.each do |aula| %>
+    <li>
+      <%= link_to aula.titulo, curso_aula_path(@curso, aula) %>
+      <% unless aula.liberada %>
+        (Bloqueada)
+      <% end %>
+    </li>
+  <% end %>
+</ul>
