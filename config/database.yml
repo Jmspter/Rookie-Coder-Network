@@ -17,5 +17,5 @@ test:
 production:
   <<: *default
   database: rookie_coder_network_production
-  username: rookie_coder_network
-  password: <%= ENV["ROOKIE_CODER_NETWORK_DATABASE_PASSWORD"] %>
+  username: your_username
+  password: <%= ENV['DATABASE_PASSWORD'] %>
