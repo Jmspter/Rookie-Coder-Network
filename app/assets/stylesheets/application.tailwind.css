@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 /* Estilizando o fundo e o texto do editor */
 trix-editor {
     background-color: #1e1e1e;
