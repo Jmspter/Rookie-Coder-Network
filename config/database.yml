@@ -3,7 +3,7 @@ default: &default
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: postgres
-  password: 94037725
+  password: Jam10Bi@
   host: localhost
 
 development:
@@ -17,5 +17,5 @@ test:
 production:
   <<: *default
   database: rookie_coder_network_production
-  username: rookie_coder_network
-  password: <%= ENV["ROOKIE_CODER_NETWORK_DATABASE_PASSWORD"] %>
+  username: your_username
+  password: <%= ENV['DATABASE_PASSWORD'] %>
