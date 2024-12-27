@@ -1,5 +1,4 @@
-@import 'actiontext.css';
-
+*= require trix
 /* Estilizando o fundo e o texto do editor */
 trix-editor {
     background-color: #1e1e1e;
@@ -38,7 +37,6 @@ trix-button .trix-button--icon .trix-button--icon-increase-nesting-level{
     display: none !important;
 }
 
-=======
 .div-alert{
     display: flex;
  
