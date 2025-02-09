@@ -40,8 +40,9 @@ Se você é um profissional experiente disposto a se tornar mentor, ou se deseja
 
 - [@Rafazg](https://github.com/Rafazg)
 - [@MattSouza14](https://github.com/MattSouza14)
-- [@AnaLuiza]()
+- [@AnaLuiza](https://github.com/Lolita0000)
 - [@IsabeladpCastro](https://github.com/IsabeladpCastro)
 - [@JamesPeter](https://github.com/Jmspter)
 - [@Saymonmedeiros](https://github.com/saymonmedeiros)
+- [@Reh](https://github.com/rehoaguiar)
 
