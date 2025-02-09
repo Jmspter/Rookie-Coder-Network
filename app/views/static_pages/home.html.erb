@@ -1,32 +1,75 @@
-<section class="md:flex space-around items-center justify-center">
-  <div class="md:w-1/2 mx-5">
-    <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl">JUNTOS, VAMOS TRANSFORMAR CÓDIGOS EM CONQUISTAS!</h1>
-    <p class="mb-6 text-lg font-normal text-gray-400 lg:text-xl">Empoderando novos desenvolvedores a trilharem seu caminho no mundo da programação!</p>
-    <a href="/articles" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center bg-lime-700 rounded-lg hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:focus:ring-lime-900">
-        Bora começar
-        <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-      </svg>
-    </a>      
-  </div>
-  <div class="mt-10">
-    <%= image_tag("image01.svg") %>
-  </div>
-</section>
-<section class="md:flex flex-row-reverse">
-      <div class="md:w-1/2 mx-5 flex flex-col justify-center items-center">
-      <h1 class="mb-4 text-3xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-3xl">ENCONTRE-SE NA ÁREA DE TI</h1>
-      <p class="mb-6 text-lg font-normal text-gray-400 lg:text-xl">Faça o nosso teste vocacional, descubra sua area e dê um play em sua carreira.</p>
-
-      <%= link_to quiz_question_path do %>
-      <button class="relative p-8 bg-lime-500 text-white rounded-full focus:outline-none hover:bg-lime-600 transition duration-300 group">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 fill-current group-hover:scale-110 transform transition-transform duration-300 ease-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="5 3 19 12 5 21 5 3"></polygon>
-        </svg>
-      </button> 
-      <% end %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rookie Coder</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .custom-green {
+      color: #84CC16;
+    }
+    .custom-purple {
+      color: #9732D4;
+    }
+    .bg-custom-green {
+      background-color: #84CC16;
+    }
+    .bg-custom-purple {
+      background-color: #9732D4;
+    }
+    .bg-custom-gray {
+      background-color: #222222;
+    }
+  </style>
+</head>
+<body class="bg-custom-gray text-white">
+  <main class="px-8 py-12">
+    <section class="flex flex-col lg:flex-row items-stretch justify-evenly gap-12">
+      <div class="max-w-lg flex flex-col items-center">
+        <h2 class="text-4xl font-bold leading-tight text-center">
+          Juntos vamos transformar <span class="custom-purple">códigos</span> em <span class="custom-green">conquistas</span>!
+        </h2>
+        <p class="ml-8 text-lg text-gray-300 mt-4">
+          Empoderando novos desenvolvedores e ensinando-os a trilharem seu caminho no mundo da programação
+        </p>
+        <div class="pt-6">
+        <button class="relative inline-block px-12 py-2 text-black text-base tracking-widest transition-all duration-300 rounded-full overflow-hidden bg-[#18A2BD] before:absolute before:bottom-0 before:left-0 before:w-0 before:h-full before:bg-[#9732D4] before:rounded before:transition-all before:duration-300 hover:before:w-full hover:text-white">
+        <span class="relative z-10 font-bold text-white">Bora Começar!</span>
+      </button>      
+        </div>
       </div>
-      <div>
-      <%= image_tag("image02.svg") %>
-     </div>
-</section>
+
+      <div class="w-full max-w-md h-72 sm:h-80 md:h-96 flex items-center justify-center">
+      <svg width="786.82" height="572.26" viewBox="0 0 786.82 572.26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <%= image_tag("supHome.svg") %>
+      </svg>
+    </div>
+    
+    </section>
+
+    <section class="mt-16 flex flex-col-reverse lg:flex-row items-center justify-evenly gap-12">
+      <div class="w-full max-w-md h-72 sm:h-80 md:h-96 flex items-center justify-center">
+        <svg width="666" height="563" viewBox="0 0 666 563" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <%= image_tag("infHome.svg") %>
+        </svg>
+      </div>
+
+      <div class="max-w-lg text-center lg:text-left flex flex-col items-center">
+        <h3 class="text-3xl font-bold text-center">
+          <span class="custom-green">Encontre-se</span> na área de <span class="custom-purple">TI</span>
+        </h3>
+        <p class="text-lg text-gray-300 mt-4">
+          Faça o nosso teste vocacional, descubra a sua área e dê um play em sua carreira
+        </p>
+        <button class="relative my-2 flex items-center px-5 py-5 text-black text-base tracking-widest transition-all duration-300 rounded-full overflow-hidden bg-white">
+        <svg class="w-12 h-12 relative ml-2 transition-all duration-300 hover:fill-[#9732D4] fill-[#18A2BD]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 10 16">
+          <path d="M3.414 1A2 2 0 0 0 0 2.414v11.172A2 2 0 0 0 3.414 15L9 9.414a2 2 0 0 0 0-2.828L3.414 1Z"/>
+        </svg>
+      </button>
+                          
+      </div>
+    </section>
+  </main>
+</body>
+</html>
