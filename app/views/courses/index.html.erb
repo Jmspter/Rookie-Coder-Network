@@ -1,0 +1,53 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
+    <h2 class="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-highlight to-[#9732D4] bg-clip-text text-transparent">
+      Resultados da Busca
+    </h2>
+    
+    <!-- Formulário de busca -->
+    <div class="w-full md:w-auto">
+      <%= render partial: "search_form" %>
+    </div>
+  </div>
+
+  <% if @courses.any? %>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <% @courses.each do |course| %>
+        <%= link_to course_path(course), class: "block group transform hover:scale-[1.02] transition-transform duration-300" do %>
+          <div class="relative w-full h-64 rounded-xl overflow-hidden bg-gradient-to-br from-white/5 to-white/10 border border-white/10 shadow-lg backdrop-blur-md flex flex-col">
+            <!-- Imagem do curso com gradiente único baseado no ID -->
+            <% gradient_id = Digest::MD5.hexdigest(course.id.to_s)[0..5] %>
+            <div class="h-3/5 bg-gradient-to-r from-[#<%= gradient_id[0..2] %>] to-[#<%= gradient_id[3..5] %>] flex items-center justify-center relative">
+              <div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
+              <span class="text-4xl text-white/80 z-10"><%= course.name.first.upcase %></span>
+            </div>
+
+            <div class="p-4 flex-1 flex flex-col">
+              <h3 class="font-bold text-lg mb-1 text-white group-hover:text-highlight transition-colors">
+                <%= course.name %>
+              </h3>
+              <p class="text-sm text-gray-400 line-clamp-2"><%= course.description %></p>
+              <div class="mt-auto flex justify-between items-center text-sm">
+                <span class="text-gray-300">
+                  <%= pluralize(course.media.count, 'Aula') %>
+                </span>
+                <span class="px-2 py-1 rounded-full text-xs bg-highlight/20 text-highlight">
+                  <%= course.modality.name %>
+                </span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="p-8 rounded-2xl backdrop-blur-lg bg-white/10 border border-dashed border-white/20 text-center">
+      <svg class="w-12 h-12 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      <h3 class="text-xl font-medium text-white mt-4">Nenhum curso encontrado</h3>
+      <p class="text-gray-400 mt-2 mb-4">Tente ajustar os termos da sua busca</p>
+      <%= link_to 'Ver todos os cursos', courses_path, class: 'text-highlight hover:underline flex items-center justify-center gap-2' %>
+    </div>
+  <% end %>
+</div>

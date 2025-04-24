@@ -1,0 +1,56 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <!-- Cabeçalho e Botão de Adicionar -->
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+    <h1 class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-highlight to-[#9732D4] bg-clip-text text-transparent">
+      Modalidades
+    </h1>
+    <% if current_user.admin? %>
+    <%= link_to new_modality_path, class: 'px-4 py-2 rounded-lg backdrop-blur-md bg-highlight hover:bg-[#7ab62b] transition-colors duration-300 flex items-center gap-2 shadow-lg hover:shadow-highlight/20' do %>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+      </svg>
+      Nova Modalidade
+    <% end %>
+    <% end %>
+  </div>
+
+  <!-- Lista de Modalidades -->
+  <div class="space-y-4">
+    <% if @modalities.any? %>
+      <% @modalities.each do |modality| %>
+        <%= link_to modality_path(modality), class: 'block p-6 rounded-xl backdrop-blur-md bg-white/5 border border-white/10 hover:border-highlight/50 transition-all duration-300 group' do %>
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-4">
+                <h3 class="text-xl font-semibold group-hover:text-highlight transition-colors">
+                  <%= modality.name %>
+                </h3>
+                <span class="px-3 py-1 text-xs rounded-full bg-highlight/20 text-highlight">
+                  <%= pluralize(modality.courses.count, 'curso') %>
+                </span>
+              </div>
+              <p class="text-gray-300 mt-2 line-clamp-2"><%= modality.description %></p>
+            </div>
+            
+            <svg class="w-5 h-5 text-gray-400 group-hover:text-highlight transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </div>
+        <% end %>
+      <% end %>
+    <% else %>
+      <div class="p-8 rounded-2xl backdrop-blur-lg bg-white/10 border border-dashed border-white/20 text-center">
+        <svg class="w-12 h-12 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <p class="text-gray-400 mt-4 mb-3">Nenhuma modalidade cadastrada ainda.</p>
+        <%= link_to new_modality_path, class: 'text-highlight hover:underline flex items-center justify-center gap-2' do %>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+          </svg>
+          Criar primeira modalidade
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

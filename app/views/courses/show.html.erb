@@ -1,0 +1,124 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <!-- Breadcrumb com estilo moderno -->
+  <nav class="flex mb-8" aria-label="breadcrumb">
+    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+      <li class="inline-flex items-center">
+        <%= link_to 'Modalidades', modalities_path, class: "inline-flex items-center text-sm font-medium text-gray-400 hover:text-white transition-colors" %>
+      </li>
+      <li>
+        <div class="flex items-center">
+          <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+          </svg>
+          <%= link_to @course.modality.name, modality_path(@course.modality), class: "ml-1 text-sm font-medium text-gray-400 hover:text-white md:ml-2 transition-colors" %>
+        </div>
+      </li>
+      <li aria-current="page">
+        <div class="flex items-center">
+          <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+          </svg>
+          <span class="ml-1 text-sm font-medium text-highlight md:ml-2"><%= @course.name %></span>
+        </div>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- Cabeçalho do curso com ações -->
+  <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-4">
+    <h1 class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-highlight to-[#9732D4] bg-clip-text text-transparent">
+      <%= @course.name %>
+    </h1>
+    <% if current_user.admin? %>
+    <div class="flex gap-3">
+      <%= link_to edit_course_path(@course), class: 'px-4 py-2 rounded-lg backdrop-blur-md bg-white/10 border border-white/20 hover:bg-white/20 transition-colors duration-300 flex items-center gap-2' do %>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+        </svg>
+        Editar
+      <% end %>
+      
+      <%= button_to @course, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'px-4 py-2 rounded-lg backdrop-blur-md bg-red-500/90 border border-red-400/20 hover:bg-red-600 transition-colors duration-300 flex items-center gap-2' do %>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+        </svg>
+        Remover
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+
+  <!-- Descrição do curso -->
+  <div class="mb-10 p-6 rounded-2xl backdrop-blur-lg bg-white/10 border border-white/10 shadow-lg">
+    <h2 class="text-xl font-semibold mb-4 text-highlight">Sobre o curso</h2>
+    <p class="text-gray-300 leading-relaxed"><%= @course.description %></p>
+  </div>
+
+  <!-- Seção de conteúdo -->
+  <div class="mb-6 flex justify-between items-center">
+    <h2 class="text-2xl font-bold">Conteúdo</h2>
+    <% if current_user.admin? %>
+    <%= link_to new_course_medium_path(@course, @course), class: 'px-4 py-2 rounded-lg backdrop-blur-md bg-highlight hover:bg-[#7ab62b] transition-colors duration-300 flex items-center gap-2' do %>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+      </svg>
+      Adicionar Mídia
+    <% end %>
+    <% end %>
+  </div>
+
+  <!-- Lista de mídias -->
+  <% if @course.media.any? %>
+    <div class="space-y-4">
+      <% @course.media.each do |medium| %>
+        <div class="p-5 rounded-xl backdrop-blur-md bg-white/5 border border-white/10 hover:border-highlight/50 transition-all duration-300 group">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-3">
+                <h3 class="text-lg font-semibold group-hover:text-highlight transition-colors">
+                  <%= link_to medium.title, medium %>
+                </h3>
+                <span class="px-2 py-1 text-xs rounded-full <%= medium.media_type == 'video' ? 'bg-red-500/20 text-red-400' : medium.media_type == 'pdf' ? 'bg-yellow-500/20 text-yellow-400' : 'bg-blue-500/20 text-blue-400' %>">
+                  <%= medium.media_type %>
+                </span>
+              </div>
+              <p class="text-sm text-gray-400 mt-1"><%= medium.url %></p>
+            </div>
+            <% if current_user.admin? %>
+            <div class="flex gap-2">
+              <%= link_to edit_medium_path(medium), class: 'p-2 rounded-lg backdrop-blur-md bg-white/10 border border-white/20 hover:bg-white/20 transition-colors duration-300' do %>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                </svg>
+              <% end %>
+              
+              <%= button_to medium_path(medium), method: :delete, data: { confirm: 'Tem certeza?' }, class: 'p-2 rounded-lg backdrop-blur-md bg-red-500/20 border border-red-400/20 hover:bg-red-500/30 transition-colors duration-300' do %>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+              <% end %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="p-6 rounded-2xl backdrop-blur-lg bg-white/10 border border-dashed border-white/20 text-center">
+      <p class="text-gray-400 mb-3">Nenhuma mídia cadastrada para este curso.</p>
+      <% if current_user.admin? %>
+      <%= link_to 'Adicionar primeira mídia', new_course_medium_path(@course, @course), class: 'text-highlight hover:underline' %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <!-- Botão de voltar -->
+  <div class="mt-10">
+    <%= link_to :back , class: 'inline-flex items-center text-gray-400 hover:text-white transition-colors' do %>
+      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+      </svg>
+      Voltar
+    <% end %>
+  </div>
+</div>

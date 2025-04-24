@@ -1,0 +1,11 @@
+<%= form_with url: courses_path, method: :get, local: true, class: "flex flex-col sm:flex-row gap-3 mb-10 animate-fade-in-up delay-100" do %>
+    <div class="relative flex-1 group">
+    <%= text_field_tag :q, params[:q], placeholder: "Buscar cursos...", class: "w-full p-3 pl-10 rounded-lg bg-white/10 border border-white/20 placeholder-gray-400 text-white backdrop-blur-md focus:border-highlight focus:ring-2 focus:ring-highlight/30 transition-all duration-300" %>
+    <svg class="absolute left-3 top-3.5 w-5 h-5 text-gray-400 group-focus-within:text-highlight transition-colors"
+        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    </svg>
+    </div>
+    <%= submit_tag "Filtrar Cursos", class: "bg-gradient-to-r from-purple-btn to-[#8a5a9c] px-5 py-3 rounded-lg text-white font-semibold hover:shadow-lg hover:shadow-[#6A497F]/30 hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2" %>
+<% end %>

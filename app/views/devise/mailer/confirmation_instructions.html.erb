@@ -1,0 +1,18 @@
+<div class="email-wrapper">
+  <div class="email-content">
+    <div class="header">
+      <h1>Bem-vindo à Rookie Coder Network!</h1>
+    </div>
+    <div class="content">
+      <p>Olá, <strong><%= @user.username %></strong>,</p>
+      <p>Estamos felizes por ter você conosco! Para ativar sua conta, confirme seu endereço de e-mail clicando no botão abaixo:</p>
+      <p style="text-align: center;">
+        <%= link_to 'Confirmar meu e-mail', confirmation_url(@resource, confirmation_token: @token), class: 'button' %>
+      </p>
+      <p>Se você não se cadastrou na nossa plataforma, basta ignorar este e-mail.</p>
+    </div>
+    <div class="footer">
+      © <%= Time.now.year %> Rookie Coder Network. Todos os direitos reservados.
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="email-wrapper">
+  <div class="email-content">
+    <div class="header">
+      <h1>Conta bloqueada temporariamente</h1>
+    </div>
+    <div class="content">
+      <p>Olá, <strong><%= @user.username %></strong>,</p>
+
+      <p>Sua conta foi temporariamente bloqueada devido a um número excessivo de tentativas de login sem sucesso.</p>
+
+      <p>Para desbloquear sua conta e tentar novamente, clique no botão abaixo:</p>
+
+      <p style="text-align: center;">
+        <%= link_to 'Desbloquear minha conta', unlock_url(@resource, unlock_token: @token), class: 'button' %>
+      </p>
+
+      <p>Se você não tentou acessar sua conta recentemente, recomendamos alterar sua senha assim que possível para manter sua segurança.</p>
+    </div>
+    <div class="footer">
+      © <%= Time.now.year %> Rookie Coder Network. Todos os direitos reservados.
+    </div>
+  </div>
+</div>

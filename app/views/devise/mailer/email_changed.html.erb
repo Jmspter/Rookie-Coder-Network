@@ -1,0 +1,22 @@
+<div class="email-wrapper">
+  <div class="email-content">
+    <div class="header">
+      <h1>Atualização de e-mail na Rookie Coder Network</h1>
+    </div>
+    <div class="content">
+      <p>Olá, <strong><%= @user.name %></strong>,</p>
+
+      <% if @resource.try(:unconfirmed_email?) %>
+        <p>Estamos entrando em contato para informar que seu e-mail está sendo alterado para <strong><%= @resource.unconfirmed_email %></strong>.</p>
+        <p>Você receberá um e-mail de confirmação nesse novo endereço em breve.</p>
+      <% else %>
+        <p>Estamos entrando em contato para informar que seu e-mail foi alterado para <strong><%= @resource.email %></strong>.</p>
+      <% end %>
+
+      <p>Se você não solicitou essa alteração, por favor entre em contato conosco imediatamente.</p>
+    </div>
+    <div class="footer">
+      © <%= Time.now.year %> Rookie Coder Network. Todos os direitos reservados.
+    </div>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Rcn" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <style type="text/tailwindcss">
+      @theme {
+        --color-highlight: #84CC16;
+        --color-purple-btn: #6A497F;
+        --color-bg-dark: #1C1C1C;
+        --color-card-bg: #2C2C2C;
+
+        --backdrop-blur-xs: 2px;
+        --backdrop-blur-sm: 4px;
+        --backdrop-blur-md: 8px;
+        --backdrop-blur-lg: 12px;
+        --backdrop-blur-xl: 20px;
+      }
+
+      @layer utilities {
+        .animate-fade-in-down {
+          animation: fadeInDown 0.3s ease-out;
+        }
+        .animate-fade-out-up {
+          animation: fadeOutUp 0.3s ease-in;
+        }
+
+        @keyframes fadeInDown {
+          0% {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeOutUp {
+          0% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+          100% {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-[#222222] text-white">
+    <%= render "shared/header" %>
+    <% if notice || alert %>
+      <div id="flash-message" class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 animate-fade-in-down">
+        <div class="<%= notice ? 'bg-green-500/20 border-green-500/30' : 'bg-red-500/20 border-red-500/30' %> rounded-xl backdrop-blur-lg p-4 border shadow-lg flex items-start space-x-3 max-w-xs sm:max-w-sm">
+          <% if notice %>
+            <svg class="w-6 h-6 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          <% else %>
+            <svg class="w-6 h-6 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          <% end %>
+          <div class="flex-1 <%= notice ? 'text-green-100' : 'text-red-100' %>">
+            <%= notice || alert %>
+          </div>
+          <button onclick="this.parentElement.remove()" class="text-gray-300 hover:text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <script>
+        setTimeout(() => {
+          const flash = document.getElementById('flash-message');
+          if (flash) {
+            flash.classList.add('animate-fade-out-up');
+            setTimeout(() => flash.remove(), 300);
+          }
+        }, 5000);
+      </script>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

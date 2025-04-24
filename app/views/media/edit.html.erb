@@ -1,0 +1,25 @@
+<div class="max-w-4xl mx-auto px-4">
+  <nav aria-label="breadcrumb" class="my-6">
+    <ol class="flex items-center text-sm text-gray-400 space-x-2">
+      <li>
+        <%= link_to 'Modalidades', modalities_path, class: 'hover:text-white transition' %>
+        <span class="mx-1">/</span>
+      </li>
+      <li>
+        <%= link_to @medium.course.modality.name, modality_path(@medium.course.modality), class: 'hover:text-white transition' %>
+        <span class="mx-1">/</span>
+      </li>
+      <li>
+        <%= link_to @medium.course.name, course_path(@medium.course), class: 'hover:text-white transition' %>
+        <span class="mx-1">/</span>
+      </li>
+      <li class="text-white font-semibold" aria-current="page">Editar Mídia</li>
+    </ol>
+  </nav>
+
+  <h1 class="text-2xl font-bold text-white mb-6">
+    Editar Mídia
+  </h1>
+
+  <%= render 'form' %>
+</div>

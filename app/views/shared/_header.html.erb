@@ -1,0 +1,87 @@
+<nav class="fixed w-full z-50 backdrop-blur-xl bg-white/10 border-b border-white/10 shadow-lg">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-3 sm:px-6 sm:py-4">
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <%= image_tag("LogoSVG.svg", class:"h-8 sm:h-10") %>
+        </a>
+        
+        <!-- Botão para mobile -->
+        <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-white/20 focus:outline-none">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+        
+        <!-- Menu - versão desktop -->
+        <div id="desktop-menu" class="hidden md:block">
+            <% if user_signed_in? %>
+                <!-- Usuário logado -->
+                <div class="flex items-center space-x-6">
+                    <%= link_to "Cursos", modalities_path, class: "text-white hover:text-[#84CC16] transition duration-300" %>                    
+                    <div class="relative group">
+                        <button class="flex items-center space-x-2 focus:outline-none">
+                            <%= image_tag("https://api.dicebear.com/9.x/initials/svg?seed=#{current_user.username}", class: "w-8 h-8 rounded-full border-2 border-white/30 hover:border-[#9732D4] transition duration-300") %>
+                            <span class="text-white"><%= current_user.username %></span>
+                            <svg class="w-4 h-4 text-white transform group-hover:rotate-180 transition duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        
+                        <div class="absolute flex content-center right-0 text-center w-48 rounded-md shadow-lg **backdrop-blur-xl** bg-zinc-700 border-b border-white/10 py-1 hidden group-hover:block transition duration-200">
+                            <%= link_to "Meu Perfil", edit_user_registration_path, class: "block px-4 py-2 text-white hover:text-lime-500 transition duration-200" %>
+                            <%= button_to "Sair", destroy_user_session_path, method: :delete, data: { turbo_confirm: "Quer mesmo sair?" }, class: "content-center px-4 py-2 text-white hover:text-red-500 transition duration-200" %>
+                        </div>
+                    </div>
+                </div>
+            <% else %>
+                <!-- Usuário não logado -->
+                <ul class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4 font-medium">
+                    <li>
+                        <%= link_to "Registre-se", new_user_registration_path, class:"text-white block py-2 px-6 rounded-lg hover:bg-white/20 transition duration-300 border border-white/20 hover:border-white/40" %>
+                    </li>
+                    <li>
+                        <%= link_to "Login", new_user_session_path, class:"text-white block py-2 px-6 rounded-lg bg-[#9732D4] hover:bg-[#8529c0] transition duration-300 border border-[#9732D4] hover:border-[#8529c0]" %>
+                    </li>
+                </ul>
+            <% end %>
+        </div>
+        
+        <!-- Menu - versão mobile (oculto por padrão) -->
+        <div id="mobile-menu" class="hidden w-full md:hidden">
+            <% if user_signed_in? %>
+                <!-- Usuário logado (mobile) -->
+                <div class="flex flex-col space-y-4 py-4">
+                    <%= link_to "Meu Perfil", edit_user_registration_path, class: "text-white hover:text-[#84CC16] transition duration-300 py-2 px-4" %>
+                    <%= button_to "Sair", destroy_user_session_path, method: :delete, data: { turbo_confirm: "Quer mesmo sair?" }, class: "block px-4 py-2 text-gray-800 hover:bg-[#9732D4]/10 hover:text-[#9732D4] transition duration-200" %>
+                </div>
+            <% else %>
+                <!-- Usuário não logado (mobile) -->
+                <ul class="flex flex-col items-center space-y-3 py-4 font-medium">
+                    <li>
+                        <%= link_to "Registre-se", new_user_registration_path, class:"text-white block py-2 px-6 rounded-lg hover:bg-white/20 transition duration-300 border border-white/20 hover:border-white/40 w-full text-center" %>
+                    </li>
+                    <li>
+                        <%= link_to "Login", new_user_session_path, class:"text-white block py-2 px-6 rounded-lg bg-[#9732D4] hover:bg-[#8529c0] transition duration-300 border border-[#9732D4] hover:border-[#8529c0] w-full text-center" %>
+                    </li>
+                </ul>
+            <% end %>
+        </div>
+    </div>
+</nav>
+
+<!-- Espaçador para compensar o header fixo -->
+<div class="h-16 sm:h-20"></div>
+
+<script>
+    // Menu mobile toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Fechar menu ao clicar em um item (mobile)
+    document.querySelectorAll('#mobile-menu a').forEach(item => {
+        item.addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        });
+    });
+</script>
