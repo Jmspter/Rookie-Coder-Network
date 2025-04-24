@@ -46,9 +46,22 @@
           <span class="w-3 h-3 rounded-full bg-highlight"></span>
           <%= modality.name %>
         </h2>
+        <div class="flex gap-2">
+          <!-- Adicione um ID único baseado no modality.id -->
+          <button class="swiper-button-prev-<%= modality.id %> p-2 rounded-full bg-white/10 hover:bg-white/20 transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          <button class="swiper-button-next-<%= modality.id %> p-2 rounded-full bg-white/10 hover:bg-white/20 transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
       </div>
       
-      <div class="swiper mySwiper">
+      <div class="swiper mySwiper-<%= modality.id %>">
         <div class="swiper-wrapper pb-8">
           <% if modality.courses.any? %>
             <% modality.courses.each do |course| %>
@@ -63,7 +76,8 @@
                       <h3 class="font-bold text-lg mb-1"><%= course.name %></h3>
                       <p class="text-sm text-gray-400 line-clamp-2"><%= course.description %></p>
                       <div class="mt-auto flex justify-between items-center text-sm text-gray-300">
-                        <%= course.media.count %> Aulas
+                        <span class="text-highlight font-bold"><%= course.media.count %> Aulas</span>
+                        <span class="text-xs bg-white/10 px-2 py-1 rounded"><%= course.modality.name %></span>
                       </div>
                     </div>
                   </div>
@@ -77,6 +91,7 @@
             </div>
           <% end %>
         </div>
+        <div class="swiper-pagination-<%= modality.id %>"></div>
       </div>
     </section>
     <% end %>

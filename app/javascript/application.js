@@ -4,15 +4,25 @@ import "controllers"
 
 
 
-function initializeMySwiper() {
-  // Encontre o container do Swiper na página atual
-  const swiperElement = document.querySelector('.mySwiper');
-
-  if (swiperElement) {
-    if (!swiperElement.swiper) { 
-      const swiper = new Swiper('.mySwiper', {
-        slidesPerView: 1.2, // permite ver parte do próximo slide no mobile
+function initializeMySwipers() {
+  document.querySelectorAll('[class*="mySwiper-"]').forEach(swiperEl => {
+    // Extrai o ID do nome da classe
+    const id = Array.from(swiperEl.classList)
+      .find(c => c.startsWith('mySwiper-'))
+      .split('-')[1];
+    
+    if (!swiperEl.swiper) {
+      new Swiper(swiperEl, {
+        slidesPerView: 1.2,
         spaceBetween: 16,
+        navigation: {
+          nextEl: `.swiper-button-next-${id}`,
+          prevEl: `.swiper-button-prev-${id}`
+        },
+        pagination: {
+          el: `.swiper-pagination-${id}`,
+          clickable: true,
+        },
         breakpoints: {
           640: {
             slidesPerView: 2,
@@ -23,9 +33,9 @@ function initializeMySwiper() {
             spaceBetween: 32,
           }
         }
-      });      
-    } 
-  } 
+      });
+    }
+  });
 }
 
-document.addEventListener('turbo:load', initializeMySwiper);
+document.addEventListener('turbo:load', initializeMySwipers);
