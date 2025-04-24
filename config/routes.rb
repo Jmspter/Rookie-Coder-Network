@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :modalities do
+  resources :modalities, param: :slug do
     resources :courses, shallow: true, except: [:index] do
       resources :media, shallow: true
     end

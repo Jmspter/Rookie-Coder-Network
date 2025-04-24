@@ -42,7 +42,7 @@ class ModalitiesController < ApplicationController
 
   private
     def set_modality
-      @modality = Modality.find(params[:id])
+      @modality = Modality.friendly.find(params[:id] || params[:slug])
     end
 
     def modality_params

@@ -18,7 +18,7 @@
   <div class="space-y-4">
     <% if @modalities.any? %>
       <% @modalities.each do |modality| %>
-        <%= link_to modality_path(modality), class: 'block p-6 rounded-xl backdrop-blur-md bg-white/5 border border-white/10 hover:border-highlight/50 transition-all duration-300 group' do %>
+        <%= link_to modality_path(modality.slug), class: 'block p-6 rounded-xl backdrop-blur-md bg-white/5 border border-white/10 hover:border-highlight/50 transition-all duration-300 group' do %>
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div class="flex-1">
               <div class="flex items-center gap-4">

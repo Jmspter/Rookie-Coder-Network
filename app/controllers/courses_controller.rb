@@ -51,7 +51,7 @@ class CoursesController < ApplicationController
     end
 
     def set_modality
-      @modality = Modality.find(params[:modality_id])
+      @modality = Modality.find(params[:modality_slug])
     end
 
     def course_params
