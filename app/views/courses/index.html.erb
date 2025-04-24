@@ -17,9 +17,9 @@
           <div class="relative w-full h-64 rounded-xl overflow-hidden bg-gradient-to-br from-white/5 to-white/10 border border-white/10 shadow-lg backdrop-blur-md flex flex-col">
             <!-- Imagem do curso com gradiente único baseado no ID -->
             <% gradient_id = Digest::MD5.hexdigest(course.id.to_s)[0..5] %>
-            <div class="h-3/5 bg-gradient-to-r from-[#<%= gradient_id[0..2] %>] to-[#<%= gradient_id[3..5] %>] flex items-center justify-center relative">
+            <div class="h-3/5 flex items-center justify-center relative" style="background: linear-gradient(to right, #<%= "%06x" % (rand * 0xffffff) %>, #<%= "%06x" % (rand * 0xffffff) %>)">
               <div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
-              <span class="text-4xl text-white/80 z-10"><%= course.name.first.upcase %></span>
+              <span class="text-4xl text-white/80 z-10"><%= course.name.upcase %></span>
             </div>
 
             <div class="p-4 flex-1 flex flex-col">

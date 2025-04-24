@@ -63,3 +63,7 @@ gem "devise", "~> 4.9"
 
 # URLs amigaveis
 gem 'friendly_id', '~> 5.5.0'
+
+gem "tailwindcss-ruby", "~> 4.1"
+
+gem "tailwindcss-rails", "~> 4.2"

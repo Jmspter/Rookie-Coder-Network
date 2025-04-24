@@ -22,54 +22,7 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
-    <style type="text/tailwindcss">
-      @theme {
-        --color-highlight: #84CC16;
-        --color-purple-btn: #6A497F;
-        --color-bg-dark: #1C1C1C;
-        --color-card-bg: #2C2C2C;
-
-        --backdrop-blur-xs: 2px;
-        --backdrop-blur-sm: 4px;
-        --backdrop-blur-md: 8px;
-        --backdrop-blur-lg: 12px;
-        --backdrop-blur-xl: 20px;
-      }
-
-      @layer utilities {
-        .animate-fade-in-down {
-          animation: fadeInDown 0.3s ease-out;
-        }
-        .animate-fade-out-up {
-          animation: fadeOutUp 0.3s ease-in;
-        }
-
-        @keyframes fadeInDown {
-          0% {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes fadeOutUp {
-          0% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-          100% {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-        }
-      }
-    </style>
   </head>
   <body class="bg-[#222222] text-white">
     <%= render "shared/header" %>
