@@ -2,7 +2,7 @@
   <section class="max-w-[1500px] mx-auto">
     <!-- Título  -->
     <h1 class="text-3xl sm:text-4xl font-bold mb-6 text-center sm:text-left animate-fade-in-down">
-      Conheça <span class="text-highlight bg-clip-text text-transparent bg-gradient-to-r from-[#84CC16] to-[#9732D4]">nossos cursos</span>!
+      Conheça <span class="text-highlight bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-[#9732D4]">nossos cursos</span>!
       <span class="inline-block ml-2 animate-wiggle">🎓</span>
     </h1>
     
@@ -10,33 +10,73 @@
     <%= render partial: "courses/search_form" %>
 
     <!-- Banner com Glassmorphism -->
-    <section class="rounded-2xl p-8 sm:p-10 text-center mb-12 backdrop-blur-lg bg-gradient-to-br from-white/10 to-white/5 border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-500 animate-fade-in-down delay-200 relative overflow-hidden">
-      <div class="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-[#9732D4]/20 blur-xl"></div>
-      <div class="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-[#84CC16]/20 blur-xl"></div>
+<section class="relative overflow-hidden rounded-2xl p-8 sm:p-10 text-center mb-12 backdrop-blur-lg bg-gradient-to-br from-white/10 to-white/5 border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-500 animate-fade-in-down delay-200">
+  <!-- Decorações de fundo -->
+  <div class="absolute -top-20 -right-20 w-40 h-40 bg-[#9732D4]/20 rounded-full blur-xl"></div>
+  <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-[#84CC16]/20 rounded-full blur-xl"></div>
+
+  <!-- Swiper Carrossel -->
+  <div class="swiper mySwiper-destaques">
+    <div class="swiper-wrapper">
       
-      <h2 class="text-xl sm:text-2xl font-semibold mb-4 relative z-10">
-        <span class="text-highlight">Destaque da semana:</span><br>
-        Curso de Ruby on Rails com 100% OFF!
-      </h2>
-      <p class="text-gray-300 mb-6 max-w-2xl mx-auto relative z-10">
-        Aproveite esta promoção exclusiva para dominar uma das frameworks mais poderosas do mercado
-      </p>
-      <button class="relative inline-flex items-center px-8 py-3 overflow-hidden text-lg font-medium text-white bg-highlight rounded-full group hover:scale-105 transition-transform duration-300 z-10">
-        <span class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40"></span>
-        <span class="relative flex items-center gap-2">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
-          </svg>
-          Quero aproveitar!
-        </span>
-      </button>
-      
-      <div class="flex justify-center gap-1 mt-6 relative z-10">
-        <% 6.times do |i| %>
-          <span class="w-2 h-2 rounded-full <%= i == 3 ? 'bg-highlight w-3' : 'bg-gray-500' %> transition-all duration-300"></span>
-        <% end %>
+      <!-- Slide 1 -->
+      <div class="swiper-slide px-2">
+        <article class="relative z-10">
+          <h2 class="text-2xl sm:text-3xl font-bold mb-4">
+            <span class="text-highlight">Destaque da semana:</span><br>
+            Curso de Ruby on Rails com 100% OFF!
+          </h2>
+          <p class="text-gray-300 mb-6 max-w-2xl mx-auto">
+            Aproveite esta promoção exclusiva para dominar uma das frameworks mais poderosas do mercado.
+          </p>
+          <button class="relative inline-flex items-center px-8 py-3 text-lg font-semibold text-white bg-highlight rounded-full overflow-hidden group transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-highlight/50">
+            <span class="absolute right-0 w-8 h-32 -mt-12 bg-white opacity-10 rotate-12 transform translate-x-12 group-hover:-translate-x-40 transition-all duration-1000"></span>
+            <span class="relative flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+              </svg>
+              Quero aproveitar!
+            </span>
+          </button>
+        </article>
       </div>
-    </section>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide px-2">
+        <article class="relative z-10">
+          <h2 class="text-2xl sm:text-3xl font-bold mb-4">
+            <span class="text-highlight">Novo lançamento:</span><br>
+            Curso de React Avançado!
+          </h2>
+          <p class="text-gray-300 mb-6 max-w-2xl mx-auto">
+            Aprenda técnicas avançadas de React com hooks e context API.
+          </p>
+          <button class="relative inline-flex items-center px-8 py-3 text-lg font-semibold text-white bg-highlight rounded-full overflow-hidden group transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-highlight/50">
+            <span class="absolute right-0 w-8 h-32 -mt-12 bg-white opacity-10 rotate-12 transform translate-x-12 group-hover:-translate-x-40 transition-all duration-1000"></span>
+            <span class="relative flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+              </svg>
+              Saiba mais
+            </span>
+          </button>
+        </article>
+      </div>
+
+    </div>
+
+    <!-- Paginação -->
+    <div class="swiper-pagination-destaques flex justify-center gap-1 mt-6 relative z-10"></div>
+    <!-- auto play -->
+    <div class="autoplay-progress">
+      <svg viewBox="0 0 48 48">
+        <circle cx="24" cy="24" r="20"></circle>
+      </svg>
+      <span></span>
+    </div>
+  </div>
+</section>
+
 
     <!-- Cursos com carrossel  -->
     <% @modalities.each do |modality| %>

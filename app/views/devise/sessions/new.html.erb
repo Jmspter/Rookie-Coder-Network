@@ -1,26 +1,90 @@
-<h2>Log in</h2>
+<div class="flex flex-col lg:flex-row min-h-screen">
+  <!-- Seção do Formulário -->
+  <div class="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12">
+    <div class="w-full max-w-md">
+      <div class="flex justify-center mb-6">
+        <%= image_tag("LogoSVG.svg", class:"h-12 sm:h-16 w-auto") %>
+      </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <div class="p-8 rounded-xl shadow-lg backdrop-blur-md bg-white/10 border border-white/10">
+        <div class="text-center mb-8">
+          <h1 class="text-2xl sm:text-3xl font-bold text-white">
+            Já é um <span class="text-teal-400">aluno rookie</span>? 
+          </h1>
+          <p class="text-gray-400 mt-2 text-sm sm:text-base">Faça o login e desbrave novos horizontes!</p>
+        </div>
+        
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-4" }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div>
+            <%= f.label :email, class: "block text-gray-300 text-sm sm:text-base mb-1" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"seu@email.com",
+                class: "w-full h-12 sm:h-14 bg-white/90 border border-white/20 rounded-lg px-4 py-2 text-black placeholder-gray-500 focus:border-teal-400 focus:ring-2 focus:ring-teal-400/30 focus:outline-none transition-all" %>
+          </div>
+          
+          <div>
+            <%= f.label :password, class: "block text-gray-300 text-sm sm:text-base mb-1" %>
+            <%= f.password_field :password, autocomplete: "current-password", placeholder:"••••••••",
+                class: "w-full h-12 sm:h-14 bg-white/90 border border-white/20 rounded-lg px-4 py-2 text-black placeholder-gray-500 focus:border-teal-400 focus:ring-2 focus:ring-teal-400/30 focus:outline-none transition-all" %>
+          </div>
+          
+          <% if devise_mapping.rememberable? %>
+          <div class="flex items-center justify-between">
+            <%= f.label :remember_me, class: "flex items-center text-gray-300 text-xs sm:text-sm" do %>
+              <%= f.check_box :remember_me, class: "rounded border-gray-300 text-teal-400 focus:ring-teal-400 mr-2" %>
+              Lembrar de mim
+            <% end %>
+            <%= link_to "Esqueceu a senha?", new_password_path(resource_name), class: "text-sm text-teal-400 hover:text-teal-300 transition-colors" %>
+          </div>
+          <% end %>
+          
+           <%= f.submit "Login",
+            class: "w-full mt-6 bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-blue-500/20 flex items-center justify-center" do %>
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
+            </svg>
+          <% end %>
+        <% end %>
+        
+        <%#
+        <div class="flex items-center my-6">
+          <hr class="flex-grow border-gray-600">
+          <span class="text-gray-400 mx-2 text-xs sm:text-sm">ou</span>
+          <hr class="flex-grow border-gray-600">
+        </div>
+        
+        <div class="space-y-3">
+          <button 
+            class="w-full flex items-center justify-center border border-white/30 hover:border-white/50 text-white py-2 sm:py-3 px-4 rounded-full transition-all duration-300 hover:bg-white/5"
+          >
+            <img src="https://img.icons8.com/color/24/000000/google-logo.png" class="w-5 h-5 mr-2"> 
+            <span class="text-sm sm:text-base">Continuar com o Google</span>
+          </button>
+          
+          <button 
+            class="w-full flex items-center justify-center border border-white/30 hover:border-white/50 text-white py-2 sm:py-3 px-4 rounded-full transition-all duration-300 hover:bg-white/5"
+          >
+            <img src="https://img.icons8.com/ios-glyphs/24/ffffff/github.png" class="w-5 h-5 mr-2"> 
+            <span class="text-sm sm:text-base">Continuar com o Github</span>
+          </button>
+        </div>
+        %>
+        <div class="mt-6 text-center text-sm text-gray-400">
+          Não tem uma conta? <%= link_to "Cadastre-se", new_registration_path(resource_name), class: "text-teal-400 hover:text-teal-300 underline transition-colors" %>
+        </div>
+        <div class="mt-6 text-center text-sm text-gray-400">
+          <% concat(link_to "Não recebeu instruções de confirmação?", new_confirmation_path(resource_name), class: "text-teal-400 hover:text-teal-300 underline transition-colors") %>
+          <br />
+          <% concat(link_to "Não recebeu instruções para desbloquear?", new_unlock_path(resource_name), class: "text-teal-400 hover:text-teal-300 underline transition-colors") %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+  <!-- Seção da Imagem (visível apenas em telas grandes) -->
+  <div class="hidden lg:flex lg:w-1/2 bg-[#6E6D84] items-center justify-center p-12">
+    <div class="max-w-md">
+      <%= image_tag("login.svg", class:"w-full h-auto rounded-lg") %>
+    </div>
+  </div>
+</div>
