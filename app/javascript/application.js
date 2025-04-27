@@ -72,3 +72,32 @@ function initializeMySwipers() {
 }
 
 document.addEventListener('turbo:load', initializeMySwipers);
+
+async function renderPDF(url, containerId) {
+  const loadingTask = pdfjsLib.getDocument(url);
+  const pdf = await loadingTask.promise;
+
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
+
+  for (let i = 1; i <= pdf.numPages; i++) {
+    const page = await pdf.getPage(i);
+
+    const viewport = page.getViewport({ scale: 1.5 });
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    canvas.height = viewport.height;
+    canvas.width = viewport.width;
+
+    container.appendChild(canvas);
+
+    const renderContext = {
+      canvasContext: context,
+      viewport: viewport
+    };
+    page.render(renderContext);
+  }
+}
+
+// Exporta a função se quiser usar em outros scripts
+window.renderPDF = renderPDF;

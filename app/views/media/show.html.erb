@@ -73,18 +73,15 @@
     </p>
   </div>
 
-  <%# Incorporação do Vídeo (se for vídeo) %>
+  <%# Incorporação do Vídeo ou pdf%>
   <% if @medium.media_type == 'video' %>
-    <%# Usando padding-top para criar um container com proporção 16:9 %>
+    <%# --- Exibir Vídeo --- %>
     <div class="mb-6 relative pt-[56.25%]">
       <%# Extrai o ID do vídeo do YouTube %>
-      <% youtube_video_id = @medium.url.split('v=').last if @medium.url && @medium.url.include?('youtube.com/watch') %>
-      <%# Ou para URLs curtas youtu.be %>
-      <% youtube_video_id ||= @medium.url.split('/').last if @medium.url && @medium.url.include?('youtu.be') %>
-
+      <% youtube_video_id = @medium.url.split('v=').last if @medium.url&.include?('youtube.com/watch') %>
+      <% youtube_video_id ||= @medium.url.split('/').last if @medium.url&.include?('youtu.be') %>
 
       <% if youtube_video_id %>
-        <%# Código para incorporar YouTube %>
         <iframe class="absolute top-0 left-0 w-full h-full rounded-xl"
                 src="https://www.youtube.com/embed/<%= youtube_video_id %>"
                 frameborder="0"
@@ -92,11 +89,25 @@
                 allowfullscreen>
         </iframe>
       <% else %>
-        <%# Mensagem de URL inválida estilizada para seguir o padrão %>
         <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-white/5 rounded-xl text-gray-400 border border-dashed border-white/20">
           <p>URL de vídeo inválida para incorporação.</p>
         </div>
       <% end %>
+    </div>
+
+  <% elsif @medium.media_type == 'pdf' %>
+    <%# --- Exibir PDF --- %>
+    <div class="mb-6 relative w-full h-[80vh] border rounded-xl overflow-hidden">
+      <iframe src="<%= @medium.url %>"
+              class="w-full h-full"
+              frameborder="0">
+      </iframe>
+    </div>
+
+  <% else %>
+    <%# --- Se não for vídeo nem pdf, mostra mensagem --- %>
+    <div class="mb-6 p-4 border border-dashed rounded-xl text-center text-gray-400">
+      <p>Tipo de mídia não suportado.</p>
     </div>
   <% end %>
 
