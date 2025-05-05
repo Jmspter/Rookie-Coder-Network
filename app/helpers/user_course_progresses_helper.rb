@@ -1,0 +1,2 @@
+module UserCourseProgressesHelper
+end

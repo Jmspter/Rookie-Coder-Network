@@ -64,10 +64,17 @@ gem "devise", "~> 4.9"
 # URLs amigaveis
 gem 'friendly_id', '~> 5.5.0'
 
+#tailwind
 gem "tailwindcss-ruby", "~> 4.1"
 
 gem "tailwindcss-rails", "~> 4.2"
 
+#Tradução para pt-br
 gem "devise-i18n", "~> 1.13"
 
 gem 'rails-i18n', '~> 8.0.0'
+
+#Gerar certificados
+gem "prawn", "~> 2.5"
+
+gem "prawn-table", "~> 0.2.2"

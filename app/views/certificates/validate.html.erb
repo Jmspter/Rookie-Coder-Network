@@ -1,0 +1,32 @@
+<%# app/views/certificates/validate.html.erb %>
+<div class="container mx-auto py-8">
+  <h1 class="text-2xl font-bold mb-6">Validar Certificado</h1>
+
+  <%= form_with url: validate_certificate_path, method: :get, local: true, class: 'mb-8' do |f| %>
+    <div class="flex">
+      <%= f.text_field :token, 
+            value: params[:token],
+            placeholder: 'Digite o código do certificado',
+            class: 'flex-grow px-4 py-2 border rounded-l' %>
+      <%= f.submit 'Validar', 
+            class: 'bg-blue-600 text-white px-6 py-2 rounded-r hover:bg-blue-700' %>
+    </div>
+  <% end %>
+
+  <% if @certificate %>
+    <div class="rounded-lg shadow p-6">
+      <h2 class="text-xl font-bold mb-4">Certificado Válido</h2>
+      <p><strong>Aluno:</strong> <%= @certificate.user.username %></p>
+      <p><strong>Curso:</strong> <%= @certificate.course.name %></p>
+      <p><strong>Data de Emissão:</strong> <%= @certificate.issued_at.strftime('%d/%m/%Y') %></p>
+      <p class="mt-4">
+        <strong>Código:</strong> 
+        <code class="bg-gray-100 p-2 rounded"><%= @certificate.download_token %></code>
+      </p>
+    </div>
+  <% elsif params[:token] %>
+    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4">
+      <p>Nenhum certificado encontrado com este código.</p>
+    </div>
+  <% end %>
+</div>

@@ -27,6 +27,7 @@
                         </button>
                         
                         <div class="absolute flex content-center right-0 text-center w-48 rounded-md shadow-lg **backdrop-blur-xl** bg-zinc-700 border-b border-white/10 py-1 hidden group-hover:block transition duration-200">
+                            <%= link_to 'Validar Certificado', validate_certificate_path, class: 'text-gray-600 hover:text-gray-900' %>
                             <%= link_to "Meu Perfil", edit_user_registration_path, class: "block px-4 py-2 text-white hover:text-lime-500 transition duration-200" %>
                             <%= button_to "Sair", destroy_user_session_path, method: :delete, data: { turbo_confirm: "Quer mesmo sair?" }, class: "content-center px-4 py-2 text-white hover:text-red-500 transition duration-200" %>
                         </div>

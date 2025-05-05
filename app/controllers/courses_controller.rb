@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :set_modality, only: [:new, :create]
-  before_action :require_admin, except: [:show, :index]
+  before_action :require_admin, except: [:show, :index, :certificate]
 
   def index
     if params[:q].present?
@@ -43,6 +43,22 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy
     redirect_to @course.modality, notice: 'Curso removido com sucesso.'
+  end
+
+  def certificate
+    @course = Course.find(params[:id])
+    @certificate = current_user.certificates.find_by(course: @course)
+    
+    unless @certificate
+      @certificate = current_user.certificates.create!(
+        course: @course,
+        issued_at: Time.current,
+        download_token: SecureRandom.urlsafe_base64
+      )
+      @certificate.generate_pdf
+    end
+    
+    redirect_to certificate_path(@certificate)
   end
 
   private

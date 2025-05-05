@@ -1,5 +1,6 @@
 class Medium < ApplicationRecord
   belongs_to :course
+  has_many :user_course_progresses, foreign_key: :medium_id
 
   validates :title, presence: true
   validates :url, presence: true
