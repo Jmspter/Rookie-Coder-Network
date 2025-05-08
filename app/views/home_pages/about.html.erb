@@ -1,0 +1,99 @@
+<section class="py-16 px-4 sm:px-6 lg:px-8">
+  <!-- About Rookie Coder -->
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-bold">
+        Sobre a <span class="text-lime-500">Rookie Coder</span>
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-teal-400 to-lime-500 mx-auto mt-4 rounded-full"></div>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-12 items-center">
+      <div class="lg:w-1/2 grid grid-cols-2 gap-6">
+        <div class="rounded-xl overflow-hidden shadow-2xl transform hover:scale-105 transition duration-500">
+          <%= image_tag "rookiedev.png", class: "w-full h-full object-cover", alt: "Equipe Rookie Coder" %>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-2xl transform hover:scale-105 transition duration-500 mt-8">
+          <%= image_tag "coffe.jpg", class: "w-full h-full object-cover", alt: "Café da equipe" %>
+        </div>
+      </div>
+
+      <div class="lg:w-1/2 backdrop-blur-sm bg-white/5 p-8 rounded-2xl border border-white/10 shadow-xl">
+        <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+          Nosso site é uma plataforma dedicada a desenvolvedores, onde você pode compartilhar conhecimento, aprender novas técnicas e interagir com a comunidade.
+        </p>
+        <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+          Aqui, você encontrará artigos sobre Front-end, Back-end, Full-stack, Desenvolvimento Mobile, Desenvolvimento Web e Ciência de Dados. Nosso objetivo é criar um espaço colaborativo e enriquecedor para todos os entusiastas da tecnologia.
+        </p>
+        <p class="text-lg text-gray-300 italic leading-relaxed">
+          Atualmente viciados em Cappuccino Power Whey e inimigos do JavaScript.
+          <span class="inline-block ml-2 animate-bounce">☕</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team Section -->
+  <div class="max-w-7xl mx-auto mt-24">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-400 to-lime-500 bg-clip-text text-transparent">
+        Nossa Equipe
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-teal-400 to-lime-500 mx-auto mt-4 rounded-full"></div>
+    </div>
+
+    <div class="relative px-4">
+      <div class="swiper mySwiper-about">
+        <div class="swiper-wrapper h-[600px] pb-12">
+          <% @friends.each do |friend| %>
+            <div class="swiper-slide flex h-full select-none transition-transform duration-300 ease-in-out will-change-transform">
+              <div class="flex flex-col justify-between items-center p-6 backdrop-blur-sm bg-white/5 rounded-2xl border border-white/10 shadow-lg w-full h-full">
+                <!-- Imagem oval -->
+                <div class="w-40 h-60 overflow-hidden rounded-full bg-gray-200 mx-auto">
+                  <%= image_tag asset_path(friend.image), alt: friend.nome, class: "w-full h-full object-cover" %>
+                </div>
+
+                <!-- Nome -->
+                <h3 class="text-xl font-bold text-white mt-4 mb-2 text-center"><%= friend.nome %></h3>
+
+                <!-- Descrição ocupa espaço flexível -->
+                <p class="text-gray-300 text-center flex-1 overflow-hidden"><%= friend.description %></p>
+
+                <!-- Ícones sociais no final -->
+                <div class="mt-4 flex space-x-3">
+                  <% friend.social_links&.each do |social| %>
+                    <%= link_to social[:url], target: "_blank", title: social[:icon].capitalize, class:"text-gray-400 hover:text-teal-400 transition-colors" do %>
+                      <%= image_tag asset_path(social[:icon]), alt: friend.nome, class: "text-x", style: "width: 40px; height: 40px; margin-right: 5px;" %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Navigation buttons -->
+      <div class="swiper-button-prev-about absolute top-1/2 left-0 -translate-y-1/2 z-10 w-12 h-12 bg-white/20 backdrop-blur-md text-white rounded-full flex items-center justify-center shadow-lg hover:bg-lime-400/80 transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </div>
+      <div class="swiper-button-next-about absolute top-1/2 right-0 -translate-y-1/2 z-10 w-12 h-12 bg-white/20 backdrop-blur-md text-white rounded-full flex items-center justify-center shadow-lg hover:bg-lime-400/80 transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .animate-bounce {
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+</style>

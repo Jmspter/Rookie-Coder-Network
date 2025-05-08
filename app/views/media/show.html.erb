@@ -43,23 +43,6 @@
     <span class="text-green-600">✓ Concluído</span>
   <% end %>
 
-  <% if current_user.completed_course?(@medium.course) %>
-    <div class="mt-8 p-4 bg-yellow-50 border-l-4 border-yellow-400">
-      <h3 class="font-bold">Parabéns!</h3>
-      <p>Você completou todos os conteúdos deste curso.</p>
-      
-      <% certificate = current_user.certificates.find_by(course: @medium.course) %>
-      <% if certificate %>
-        <%= link_to 'Ver Certificado', certificate_path(certificate),
-              class: 'inline-block mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700' %>
-      <% else %>
-        <%= link_to 'Emitir Certificado', certificate_course_path(@medium.course),
-              method: :get,
-              class: 'inline-block mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700' %>
-      <% end %>
-    </div>
-  <% end %>
-
   <%# Cabeçalho do Item de Mídia e Botões %>
   <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
     <div>

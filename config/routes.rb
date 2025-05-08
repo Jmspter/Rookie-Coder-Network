@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  #Pagina Sobre
+  get '/sobre' => "home_pages#about", as: :about
+
   # Autenticação com Devise
   devise_for :users
 

@@ -4,10 +4,9 @@ import "controllers"
 
 function initializeMySwipers() {
   document.querySelectorAll('[class*="mySwiper-"]').forEach(swiperEl => {
-    const id = Array.from(swiperEl.classList)
-      .find(c => c.startsWith('mySwiper-'))
-      .split('-')[1];
-    
+
+    const id = Array.from(swiperEl.classList).find(c => c.startsWith('mySwiper-')).split('-')[1];      
+      
     if (!swiperEl.swiper) {
       // Configurações base para todos os carrosséis
       let config = {
@@ -38,7 +37,7 @@ function initializeMySwipers() {
         const progressCircle = document.querySelector(".autoplay-progress svg");
         const progressContent = document.querySelector(".autoplay-progress span");
         config = {
-          slidesPerView: 1,
+          slidesPerView: 3,
           spaceBetween: 0,
           loop: true,
           autoplay: {
@@ -61,12 +60,73 @@ function initializeMySwipers() {
             renderBullet: function (index, className) {
               return `<span class="${className} w-2 h-2 rounded-full transition-all duration-300"></span>`;
             },
-          }
+          },
         };
       }
 
+      if (id === 'about') {
+        config = {
+          slidesPerView: 1,
+          centeredSlides: true,
+          spaceBetween: 30,
+          loop: true,
+          grabCursor: true,
+          navigation: {
+            nextEl: `.swiper-button-next-${id}`,
+            prevEl: `.swiper-button-prev-${id}`
+          },
+          breakpoints: {
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 24,
+            },
+            1024: {
+              slidesPerView: 3.5,
+              spaceBetween: 32,
+            }
+          },
+          on: {
+            init() {
+              this.slides.forEach(slide => {
+                slide.style.transition = 'transform 0.8s ease, opacity 0.8s ease';
+              });
+            },
+            slideChangeTransitionStart() {
+              this.slides.forEach(slide => {
+                slide.style.transition = 'transform 0.8s ease, opacity 0.8s ease';
+              });
+            },
+            transitionStart() {
+              this.slides.forEach(slide => {
+                slide.style.transition = 'transform 0.8s ease, opacity 0.8s ease';
+              });
+            }
+          }
+        };
+      }            
+      
       // Inicializa o Swiper com as configurações
       new Swiper(swiperEl, config);
+
+      const style = document.createElement('style');
+      style.textContent = `
+        .swiper-slide {
+          transition: transform 0.8s ease, opacity 0.8s ease !important;
+        }
+        .swiper-slide:not(.swiper-slide-active) {
+          transform: scale(0.9);
+          opacity: 0.7;
+        }
+        .swiper-slide-active {
+          transform: scale(1);
+          opacity: 1;
+        }
+        .swiper-button-prev-about,
+        .swiper-button-next-about {
+          transition: all 0.3s ease;
+        }
+      `;
+      document.head.appendChild(style);
     }
   });
 }
