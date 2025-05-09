@@ -16,7 +16,8 @@
             <% if user_signed_in? %>
                 <!-- Usuário logado -->
                 <div class="flex items-center space-x-6">
-                    <%= link_to "Cursos", modalities_path, class: "text-white hover:text-[#84CC16] transition duration-300" %>                    
+                    <%= link_to "Sobre", about_path, class: "text-white hover:text-[#84CC16] transition duration-300" %>
+                    <%= link_to "Cursos", modalities_path, class: "text-white hover:text-[#84CC16] transition duration-300" %>                     
                     <div class="relative group">
                         <button class="flex items-center space-x-2 focus:outline-none">
                             <%= image_tag("https://api.dicebear.com/9.x/initials/svg?seed=#{current_user.username}", class: "w-8 h-8 rounded-full border-2 border-white/30 hover:border-[#9732D4] transition duration-300") %>
@@ -51,6 +52,7 @@
             <% if user_signed_in? %>
                 <!-- Usuário logado (mobile) -->
                 <div class="flex flex-col space-y-4 py-4">
+                    <%= link_to "Sobre", about_path, class: "text-white hover:text-[#84CC16] transition duration-300 py-2 px-4" %>
                     <%= link_to "Cursos", modalities_path, class: "text-white hover:text-[#84CC16] transition duration-300 py-2 px-4" %>
                     <%= link_to 'Validar Certificado', validate_certificate_path, class: 'text-white hover:text-[#84CC16] transition duration-300 py-2 px-4' %>
                     <%= link_to "Meu Perfil", edit_user_registration_path, class: "text-white hover:text-[#84CC16] transition duration-300 py-2 px-4" %>

@@ -107,26 +107,6 @@ function initializeMySwipers() {
       
       // Inicializa o Swiper com as configurações
       new Swiper(swiperEl, config);
-
-      const style = document.createElement('style');
-      style.textContent = `
-        .swiper-slide {
-          transition: transform 0.8s ease, opacity 0.8s ease !important;
-        }
-        .swiper-slide:not(.swiper-slide-active) {
-          transform: scale(0.9);
-          opacity: 0.7;
-        }
-        .swiper-slide-active {
-          transform: scale(1);
-          opacity: 1;
-        }
-        .swiper-button-prev-about,
-        .swiper-button-next-about {
-          transition: all 0.3s ease;
-        }
-      `;
-      document.head.appendChild(style);
     }
   });
 }

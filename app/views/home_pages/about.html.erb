@@ -1,5 +1,7 @@
+<% provide(:title, "Sobre") %>
+<div id="vanta-bg">
 <section class="py-16 px-4 sm:px-6 lg:px-8">
-  <!-- About Rookie Coder -->
+  <%# About Rookie Coder %>
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-12">
       <h2 class="text-4xl md:text-5xl font-bold">
@@ -33,7 +35,7 @@
     </div>
   </div>
 
-  <!-- Team Section -->
+  <%# Team Section %>
   <div class="max-w-7xl mx-auto mt-24">
     <div class="text-center mb-12">
       <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-400 to-lime-500 bg-clip-text text-transparent">
@@ -48,21 +50,21 @@
           <% @friends.each do |friend| %>
             <div class="swiper-slide flex h-full select-none transition-transform duration-300 ease-in-out will-change-transform">
               <div class="flex flex-col justify-between items-center p-6 backdrop-blur-sm bg-white/5 rounded-2xl border border-white/10 shadow-lg w-full h-full">
-                <!-- Imagem oval -->
+                <%# Imagem oval %>
                 <div class="w-40 h-60 overflow-hidden rounded-full bg-gray-200 mx-auto">
                   <%= image_tag asset_path(friend.image), alt: friend.nome, class: "w-full h-full object-cover" %>
                 </div>
 
-                <!-- Nome -->
+                <%# Nome %>
                 <h3 class="text-xl font-bold text-white mt-4 mb-2 text-center"><%= friend.nome %></h3>
 
-                <!-- Descrição ocupa espaço flexível -->
+                <%# Descrição ocupa espaço flexível %>
                 <p class="text-gray-300 text-center flex-1 overflow-hidden"><%= friend.description %></p>
 
-                <!-- Ícones sociais no final -->
+                <%# Ícones sociais no final %>
                 <div class="mt-4 flex space-x-3">
                   <% friend.social_links&.each do |social| %>
-                    <%= link_to social[:url], target: "_blank", title: social[:icon].capitalize, class:"text-gray-400 hover:text-teal-400 transition-colors" do %>
+                    <%= link_to social[:url], target: "_blank", title: social[:icon].capitalize, class:"text-gray-400 hover:text-teal-400 transition-colors transition-transform transform hover:scale-110 hover:rotate-3" do %>
                       <%= image_tag asset_path(social[:icon]), alt: friend.nome, class: "text-x", style: "width: 40px; height: 40px; margin-right: 5px;" %>
                     <% end %>
                   <% end %>
@@ -73,7 +75,7 @@
         </div>
       </div>
 
-      <!-- Navigation buttons -->
+      <%# Navigation buttons %>
       <div class="swiper-button-prev-about absolute top-1/2 left-0 -translate-y-1/2 z-10 w-12 h-12 bg-white/20 backdrop-blur-md text-white rounded-full flex items-center justify-center shadow-lg hover:bg-lime-400/80 transition-colors">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
@@ -87,6 +89,29 @@
     </div>
   </div>
 </section>
+</div>
+
+<!-- Scripts do Vanta.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+
+<script>
+  VANTA.GLOBE({
+    el: "#vanta-bg",
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 200.00,
+    minWidth: 200.00,
+    scale: 1.00,
+    scaleMobile: 1.00,
+    backgroundColor: 0x1c1c1c,
+    color: 0x6a497f,
+    color2: 0xffffff,
+    size: 1
+  })
+</script>
+
 
 <style>
   .animate-bounce {
@@ -96,4 +121,26 @@
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
   }
+
+  .swiper-slide {
+          transition: transform 0.8s ease, opacity 0.8s ease !important;
+        }
+        .swiper-slide:not(.swiper-slide-active) {
+          transform: scale(0.9);
+          opacity: 0.7;
+          backdrop-filter: blur(4px); 
+          -webkit-backdrop-filter: blur(4px);
+          border: 1px solid rgba(255, 255, 255, 0.1); 
+          border-radius: 1rem; 
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+                      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .swiper-slide-active {
+          transform: scale(1);
+          opacity: 1;
+        }
+        .swiper-button-prev-about,
+        .swiper-button-next-about {
+          transition: all 0.3s ease;
+        }
 </style>
