@@ -1,0 +1,124 @@
+<style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #18A2BD 0%, #84CC16 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+</style>
+<!-- Main Content -->
+<main class="max-w-4xl mx-auto px-6 sm:px-8 py-12">
+  <div
+    class="
+      backdrop-blur-lg bg-white/5 border border-white/10 rounded-2xl shadow-xl
+      overflow-hidden animate-fade-in
+    "
+  >
+    <!-- Hero Section -->
+    <div
+      class="
+        bg-gradient-to-r from-[#18A2BD]/20 to-[#84CC16]/20 p-8 sm:p-12 text-center
+      "
+    >
+      <h1 class="text-3xl sm:text-4xl font-bold text-white mb-4">Política de Privacidade</h1>
+      <p class="text-lg text-gray-300">Atualizado em:
+        <%= Date.today.strftime("%d/%m/%Y") %></p>
+    </div>
+    <!-- Content -->
+    <div class="p-6 sm:p-10 space-y-8">
+      <section class="space-y-4">
+        <p class="text-lg leading-relaxed">
+          A Rookie Coder respeita sua privacidade e está comprometida com a
+          proteção dos seus dados pessoais. Esta Política de Privacidade
+          explica como coletamos, usamos, armazenamos e protegemos suas
+          informações ao navegar em nosso site.
+        </p>
+      </section>
+      <!-- Section 1 -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-bold text-white border-b border-[#18A2BD]/30 pb-2">1. Informações que coletamos</h2>
+        <p class="text-lg leading-relaxed">
+          Podemos coletar os seguintes dados:
+        </p>
+        <ul class="space-y-2 pl-5 list-disc marker:text-[#84CC16]">
+          <li>Nome e e-mail (ao preencher formulários ou se inscrever na
+            newsletter);</li>
+          <li>Informações de navegação (cookies, endereço IP, tipo de
+            dispositivo, navegador e páginas acessadas).</li>
+        </ul>
+      </section>
+      <!-- Section 2 -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-bold text-white border-b border-[#18A2BD]/30 pb-2">2. Uso das informações</h2>
+        <p class="text-lg leading-relaxed">
+          As informações coletadas são utilizadas para:
+        </p>
+        <ul class="space-y-2 pl-5 list-disc marker:text-[#84CC16]">
+          <li>Enviar conteúdos, atualizações e materiais da Rookie Coder;</li>
+          <li>Melhorar a experiência do usuário no site;</li>
+          <li>Realizar análises e melhorias de desempenho e segurança.</li>
+        </ul>
+      </section>
+      <!-- Section 3 -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-bold text-white border-b border-[#18A2BD]/30 pb-2">3. Compartilhamento de dados</h2>
+        <p class="text-lg leading-relaxed">
+          Não vendemos nem compartilhamos suas informações com terceiros,
+          exceto quando necessário para:
+        </p>
+        <ul class="space-y-2 pl-5 list-disc marker:text-[#84CC16]">
+          <li>Cumprir obrigações legais;</li>
+          <li>Fornecer serviços essenciais de parceiros (como hospedagem ou envio
+            de e-mails), sempre sob cláusulas de confidencialidade.</li>
+        </ul>
+      </section>
+      <!-- Section 4 -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-bold text-white border-b border-[#18A2BD]/30 pb-2">4. Cookies</h2>
+        <p class="text-lg leading-relaxed">
+          Utilizamos cookies para melhorar sua experiência. Você pode optar por
+          desativá-los no seu navegador, mas isso pode afetar algumas
+          funcionalidades do site.
+        </p>
+      </section>
+      <!-- Section 5 -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-bold text-white border-b border-[#18A2BD]/30 pb-2">5. Segurança dos dados</h2>
+        <p class="text-lg leading-relaxed">
+          Adotamos medidas técnicas e organizacionais para proteger suas
+          informações contra acessos não autorizados, vazamentos ou
+          alterações.
+        </p>
+      </section>
+      <!-- Section 6 -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-bold text-white border-b border-[#18A2BD]/30 pb-2">6. Seus direitos</h2>
+        <p class="text-lg leading-relaxed">
+          Você pode:
+        </p>
+        <ul class="space-y-2 pl-5 list-disc marker:text-[#84CC16]">
+          <li>Solicitar acesso aos seus dados;</li>
+          <li>Corrigir, atualizar ou excluir suas informações;</li>
+          <li>Cancelar a inscrição de newsletters a qualquer momento.</li>
+        </ul>
+        <div class="pt-4">
+          <p class="text-lg leading-relaxed">
+            Para exercer esses direitos ou esclarecer dúvidas sobre nossa
+            política de privacidade, entre em contato através do e-mail:
+            <a
+              href="mailto:rookiecodern@gmail.com"
+              class="text-[#18A2BD] hover:underline"
+            >rookiecodern@gmail.com</a>
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>

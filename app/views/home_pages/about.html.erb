@@ -95,22 +95,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
 
-<script>
-  VANTA.GLOBE({
-    el: "#vanta-bg",
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 200.00,
-    minWidth: 200.00,
-    scale: 1.00,
-    scaleMobile: 1.00,
-    backgroundColor: 0x1c1c1c,
-    color: 0x6a497f,
-    color2: 0xffffff,
-    size: 1
-  })
-</script>
 
 
 <style>
@@ -124,6 +108,7 @@
 
   .swiper-slide {
           transition: transform 0.8s ease, opacity 0.8s ease !important;
+          backdrop-filter: blur(4px);
         }
         .swiper-slide:not(.swiper-slide-active) {
           transform: scale(0.9);
@@ -138,9 +123,11 @@
         .swiper-slide-active {
           transform: scale(1);
           opacity: 1;
+          backdrop-filter: blur(4px);
         }
         .swiper-button-prev-about,
         .swiper-button-next-about {
           transition: all 0.3s ease;
+          backdrop-filter: blur(4px);
         }
 </style>

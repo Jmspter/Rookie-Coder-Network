@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
   #Pagina Sobre
-  get '/sobre' => "home_pages#about", as: :about
+  get 'sobre' => "home_pages#about", as: :about
+
+  #Politicas de privacidade
+  get 'politicas-de-privacidade' => "home_pages#privacy_policy", as: :privacy_policy
+
+  #Termos de uso
+  get 'termos-de-uso' => "home_pages#terms_of_use", as: :terms_of_use
+
+  #Favoritar curso
+  get 'favorites', to: 'courses#favorites', as: 'favorites'
 
   # Autenticação com Devise
   devise_for :users
@@ -14,6 +23,7 @@ Rails.application.routes.draw do
 
   # Cursos: index global + funcionalidades adicionais
   resources :courses do
+    resource :favorite, only: [:create, :destroy]
     member do
       get 'certificate'  
     end

@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :terms_of_service])
     devise_parameter_sanitizer.permit(:account_update, keys: [:username])
   end
 
@@ -16,4 +16,4 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, alert: "Acesso negado."
     end
   end
-end
+end 

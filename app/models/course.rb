@@ -3,6 +3,8 @@ class Course < ApplicationRecord
   has_many :media, dependent: :destroy
   has_many :user_course_progresses
   has_many :certificates
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_by, through: :favorites, source: :user
 
   validates :name, presence: true
   validates :modality, presence: true
@@ -13,5 +15,9 @@ class Course < ApplicationRecord
 
     completed = user.user_course_progresses.where(course: self, completed: true).count
     (completed.to_f / total_media * 100).round
+  end
+
+  def favorited_by?(user)
+    favorites.exists?(user: user)
   end
 end

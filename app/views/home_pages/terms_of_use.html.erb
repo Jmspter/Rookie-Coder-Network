@@ -1,0 +1,78 @@
+<style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #18A2BD 0%, #84CC16 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+</style>
+
+<main class="max-w-4xl mx-auto px-6 sm:px-8 py-12">
+  <div class="backdrop-blur-lg bg-white/5 border border-white/10 rounded-2xl shadow-xl overflow-hidden animate-fade-in">
+    
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-[#18A2BD]/20 to-[#84CC16]/20 p-8 sm:p-12 text-center">
+      <h1 class="text-3xl sm:text-4xl font-bold text-white mb-4">Termos de Uso</h1>
+      <p class="text-lg text-gray-300">Atualizado em: <%= Date.today.strftime("%d/%m/%Y") %></p>
+    </div>
+
+    <!-- Content -->
+    <div class="p-6 sm:p-10 space-y-8">
+      <section class="space-y-4">
+        <p class="text-lg leading-relaxed">
+          Estes Termos de Uso regem o uso do site da Rookie Coder. Ao acessá-lo, você concorda com os termos aqui descritos.
+        </p>
+      </section>
+
+      <!-- Section 1 -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-bold text-white border-b border-[#18A2BD]/30 pb-2">1. Aceitação dos termos</h2>
+        <p class="text-lg leading-relaxed">
+          Ao utilizar este site, você declara estar de acordo com estes Termos de Uso e com nossa Política de Privacidade.
+        </p>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-bold text-white border-b border-[#18A2BD]/30 pb-2">2. Uso permitido</h2>
+        <p class="text-lg leading-relaxed">Você concorda em:</p>
+        <ul class="space-y-2 pl-5 list-disc marker:text-[#84CC16]">
+          <li>Utilizar o site apenas para fins legais e informativos;</li>
+          <li>Não realizar cópias ou redistribuição de conteúdo sem autorização;</li>
+          <li>Não tentar acessar áreas restritas ou violar a segurança do site.</li>
+        </ul>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-bold text-white border-b border-[#18A2BD]/30 pb-2">3. Conteúdo</h2>
+        <p class="text-lg leading-relaxed">
+          Os conteúdos publicados no site (artigos, textos, imagens, vídeos, etc.) são de propriedade da Rookie Coder ou de seus autores, protegidos por direitos autorais. Qualquer uso não autorizado poderá acarretar responsabilização legal.
+        </p>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-bold text-white border-b border-[#18A2BD]/30 pb-2">4. Links para terceiros</h2>
+        <p class="text-lg leading-relaxed">
+          Nosso site pode conter links para sites externos. Não nos responsabilizamos pelo conteúdo ou pelas práticas de privacidade desses sites.
+        </p>
+      </section>
+
+      <!-- Section 5 -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-bold text-white border-b border-[#18A2BD]/30 pb-2">5. Modificações</h2>
+        <p class="text-lg leading-relaxed">
+          Reservamo-nos o direito de atualizar este documento a qualquer momento. As mudanças entram em vigor imediatamente após sua publicação no site.
+        </p>
+      </section>
+    </div>
+  </div>
+</main>

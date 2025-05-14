@@ -1,0 +1,56 @@
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, #18A2BD 0%, #84CC16 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+</style>
+
+<main class="max-w-6xl mx-auto px-6 sm:px-8 py-12">
+  <div class="backdrop-blur-lg bg-white/5 border border-white/10 rounded-2xl shadow-xl p-6 sm:p-10 animate-fade-in">
+    
+    <h1 class="text-3xl sm:text-4xl font-bold text-white text-center mb-8 gradient-text">Meus Cursos Favoritos</h1>
+
+    <% if @favorite_courses.any? %>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <% @favorite_courses.each do |course| %>
+          <%= link_to course_path(course), class: "block group transform hover:scale-[1.02] transition-transform duration-300" do %>
+            <div class="relative w-full h-64 rounded-xl overflow-hidden bg-gradient-to-br from-white/5 to-white/10 border border-white/10 shadow-lg backdrop-blur-md flex flex-col">
+              <!-- Imagem do curso com gradiente único baseado no ID -->
+              <% gradient_id = Digest::MD5.hexdigest(course.id.to_s)[0..5] %>
+              <div class="h-3/5 flex items-center justify-center relative" style="background: linear-gradient(to right, #<%= "%06x" % (rand * 0xffffff) %>, #<%= "%06x" % (rand * 0xffffff) %>)">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
+                <span class="text-4xl text-white/80 z-10"><%= course.name.first.upcase %></span>
+              </div>
+
+              <div class="p-4 flex-1 flex flex-col">
+                <h3 class="font-bold text-lg mb-1 text-white group-hover:text-highlight transition-colors">
+                  <%= course.name %>
+                </h3>
+                <p class="text-sm text-gray-400 line-clamp-2"><%= course.description %></p>
+                <div class="mt-auto flex justify-between items-center text-sm">
+                  <span class="text-gray-300">
+                    <%= pluralize(course.media.count, 'Aula') %>
+                  </span>
+                  <span class="px-2 py-1 rounded-full text-xs bg-highlight/20 text-highlight">
+                    <%= course.modality.name %>
+                  </span>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</main>

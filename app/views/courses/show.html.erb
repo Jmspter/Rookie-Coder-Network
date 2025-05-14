@@ -25,43 +25,76 @@
   </nav>
 
   <%# Certificado %>
-<% if current_user.completed_course?(@course) %>
-  <div class="my-8 p-6 rounded-xl backdrop-blur-md bg-gradient-to-br from-yellow-500/10 to-yellow-600/10 border border-yellow-400/30 shadow-lg animate-pulse">
-    <div class="flex items-start">
-      <div class="flex-shrink-0">
-        <svg class="h-8 w-8 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-        </svg>
-      </div>
-      <div class="ml-3">
-        <h3 class="text-lg font-bold text-yellow-100">Parabéns! 🎉</h3>
-        <p class="mt-1 text-yellow-200">Você completou todos os conteúdos deste curso!</p>
-        
-        <div class="mt-4">
-          <% certificate = current_user.certificates.find_by(course: @course) %>
-          <% if certificate %>
-            <%= link_to certificate_path(certificate), 
-                  class: 'inline-flex items-center px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-teal-500 text-white font-medium hover:from-blue-600 hover:to-teal-600 transition-all duration-300 shadow-md' do %>
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-              </svg>
-              Ver Certificado
+  <% if current_user.completed_course?(@course) %>
+    <div class="my-8 p-6 rounded-xl backdrop-blur-md bg-gradient-to-br from-yellow-500/10 to-yellow-600/10 border border-yellow-400/30 shadow-lg animate-pulse">
+      <div class="flex items-start">
+        <div class="flex-shrink-0">
+          <svg class="h-8 w-8 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <div class="ml-3">
+          <h3 class="text-lg font-bold text-yellow-100">Parabéns! 🎉</h3>
+          <p class="mt-1 text-yellow-200">Você completou todos os conteúdos deste curso!</p>
+          
+          <div class="mt-4">
+            <% certificate = current_user.certificates.find_by(course: @course) %>
+            <% if certificate %>
+              <%= link_to certificate_path(certificate), 
+                    class: 'inline-flex items-center px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-teal-500 text-white font-medium hover:from-blue-600 hover:to-teal-600 transition-all duration-300 shadow-md' do %>
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+                Ver Certificado
+              <% end %>
+            <% else %>
+              <%= link_to certificate_course_path(@medium.course),
+                    method: :get,
+                    class: 'inline-flex items-center px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-teal-500 text-white font-medium hover:from-blue-600 hover:to-teal-600 transition-all duration-300 shadow-md' do %>
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+                Emitir Certificado
+              <% end %>
             <% end %>
-          <% else %>
-            <%= link_to certificate_course_path(@medium.course),
-                  method: :get,
-                  class: 'inline-flex items-center px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-teal-500 text-white font-medium hover:from-blue-600 hover:to-teal-600 transition-all duration-300 shadow-md' do %>
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-              </svg>
-              Emitir Certificado
-            <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+
+  <%# Favoritar %>
+  <% if @course.favorited_by?(current_user) %>
+    <%= button_to course_favorite_path(@course),
+                  method: :delete,
+                  class: 'flex items-center gap-2 px-4 py-4 rounded-md bg-white/10 border border-white/10 text-yellow-400 hover:bg-white/20 transition duration-200 shadow-sm hover:shadow-md',
+                  title: 'Remover dos favoritos' do %>
+      <!-- Ícone de estrela preenchida -->
+      <svg xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          class="w-5 h-5">
+        <path d="M12 .587l3.668 7.568L24 9.423l-6 5.885L19.335 24 12 19.897 4.665 24 6 15.308 0 9.423l8.332-1.268z"/>
+      </svg>
+      <span class="text-white">Remover dos favoritos</span>
+    <% end %>
+  <% else %>
+    <%= button_to course_favorite_path(@course),
+                  method: :post,
+                  class: 'flex items-center gap-2 px-4 py-4 rounded-md bg-white/10 border border-white/10 text-[#84CC16] hover:bg-white/20 transition duration-200 shadow-sm hover:shadow-md',
+                  title: 'Adicionar aos favoritos' do %>
+      <!-- Ícone de estrela contornada -->
+      <svg xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="-1 -1 27 27"
+          stroke="currentColor"
+          class="w-5 h-5">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l2.144 6.602a1 1 0 00.95.69h6.862c.969 0 1.371 1.24.588 1.81l-5.561 4.04a1 1 0 00-.364 1.118l2.145 6.602c.3.921-.755 1.688-1.54 1.118l-5.561-4.04a1 1 0 00-1.175 0l-5.561 4.04c-.784.57-1.838-.197-1.539-1.118l2.144-6.602a1 1 0 00-.364-1.118l-5.561-4.04c-.783-.57-.38-1.81.588-1.81h6.862a1 1 0 00.95-.69l2.144-6.602z"/>
+      </svg>
+      <span class="text-white">Adicionar aos favoritos</span>
+    <% end %>
+  <% end %>
 
   <!-- Cabeçalho do curso com ações -->
   <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-4">

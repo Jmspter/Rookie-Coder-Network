@@ -61,6 +61,10 @@ class CoursesController < ApplicationController
     redirect_to certificate_path(@certificate)
   end
 
+  def favorites
+    @favorite_courses = current_user.favorite_courses.includes(:modality)
+  end
+
   private
     def set_course
       @course = Course.find(params[:id])

@@ -1,34 +1,208 @@
-<h2>Sign up</h2>
+<main class="font-sans flex flex-col lg:flex-row md:overflow-hidden">
+  <!-- Seção da Imagem (lado esquerdo) -->
+  <div
+    class="
+      hidden lg:flex lg:w-1/2 bg-[#6E6D84] items-center justify-center relative
+      overflow-hidden
+    "
+  >
+    <%= image_tag "register.svg", class: "relative z-0 object-cover" %>
+    <!-- Logo -->
+    <%= link_to root_path do %>
+      <div class="absolute top-10 left-10 z-20">
+        <%= image_tag "LogoSVG.svg", class: "h-12" %>
+      </div>
+    <% end %>
+    <!-- Texto decorativo -->
+    <div class="absolute bottom-20 left-10 z-20 text-white max-w-md">
+      <h2 class="text-3xl font-bold mb-4">Junte-se à nossa comunidade</h2>
+      <p class="text-lg opacity-90">Aprenda, compartilhe e cresça com desenvolvedores de todo o mundo.</p>
+    </div>
+  </div>
+  <!-- Conteúdo do formulário (lado direito) -->
+  <div
+    class="
+      w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-10 lg:p-16
+    "
+  >
+    <div class="w-full max-w-md lg:max-w-lg">
+      <!-- Cabeçalho -->
+      <div class="text-center mb-10">
+        <h1 class="text-3xl sm:text-4xl font-bold text-white mb-3">
+          Quer se tornar um
+          <span class="text-[#18A2BD] border-b-2 border-dotted border-[#18A2BD]">aluno rookie</span>?
+        </h1>
+        <p class="text-lg text-gray-300">
+          Cadastre-se e desbloqueie novos caminhos
+        </p>
+      </div>
+      <!-- Formulário com efeito glassmorphism -->
+      <div
+        class="
+          backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl shadow-xl p-8
+          sm:p-10
+        "
+      >
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "space-y-6" }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <!-- Nome Completo -->
+          <div>
+            <%= f.label :username,
+                    "Nome Completo",
+                    class: "block text-sm font-medium text-gray-300 mb-2" %>
+            <%= f.text_field :username,
+                         autofocus: true,
+                         autocomplete: "name",
+                         placeholder: "Digite seu nome",
+                         class:
+                           "w-full px-4 py-3 rounded-lg bg-white/90 border border-white/20 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#18A2BD]/50 focus:border-[#18A2BD] transition" %>
+          </div>
+          <!-- E-mail -->
+          <div>
+            <%= f.label :email, "E-mail", class: "block text-sm font-medium text-gray-300 mb-2" %>
+            <%= f.email_field :email,
+                          autofocus: true,
+                          autocomplete: "email",
+                          placeholder: "seu@email.com",
+                          class:
+                            "w-full px-4 py-3 rounded-lg bg-white/90 border border-white/20 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#18A2BD]/50 focus:border-[#18A2BD] transition" %>
+          </div>
+          <!-- Senha -->
+          <div>
+            <%= f.label :password,
+                    "Senha",
+                    class: "block text-sm font-medium text-gray-300 mb-2" %>
+            <% if @minimum_password_length %>
+              <div class="flex items-center gap-2 mt-2 text-sm text-white/70">
+                <svg
+                  class="w-4 h-4 text-yellow-400"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z"
+                  />
+                </svg>
+                <span>(mínimo de caracteres
+                  <%= @minimum_password_length %>)</span>
+              </div>
+            <% end %>
+            <%= f.password_field :password,
+                             autocomplete: "new-password",
+                             placeholder: "Digite sua senha",
+                             class:
+                               "w-full px-4 py-3 rounded-lg bg-white/90 border border-white/20 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#18A2BD]/50 focus:border-[#18A2BD] transition" %>
+          </div>
+          <!-- Confirmar Senha -->
+          <div>
+            <%= f.label :password_confirmation,
+                    "Confirmar Senha",
+                    class: "block text-sm font-medium text-gray-300 mb-2" %>
+            <%= f.password_field :password_confirmation,
+                             autocomplete: "new-password",
+                             placeholder: "Confirme sua senha",
+                             class:
+                               "w-full px-4 py-3 rounded-lg bg-white/90 border border-white/20 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#18A2BD]/50 focus:border-[#18A2BD] transition" %>
+          </div>
+          <!-- Termos e Condições -->
+          <div class="flex items-start">
+            <div class="flex items-center h-5">
+              <%= f.check_box :terms_of_service, class: "focus:ring-[#18A2BD] h-4 w-4 text-[#18A2BD] border-white/30 rounded" %>
+            </div>
+            <div class="ml-3 text-sm">
+              <%= f.label :terms_of_service, class: "ml-3 text-sm font-medium text-gray-300" do %>
+                Concordo com a
+                <%= link_to "política de privacidade", privacy_policy_path, class: "text-[#18A2BD] hover:underline" %>
+                e os
+                <%= link_to "termos de uso", terms_of_use_path, class: "text-[#18A2BD] hover:underline" %>
+              <% end %>
+            </div>
+          </div>
+          <!-- Botão de Enviar -->
+          <div>
+            <%= f.submit "Criar Conta",
+                     class:
+                       "w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-highlight hover:bg-purple-btn focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#18A2BD] transition-all duration-300" %>
+          </div>
+        <% end %>
+        <!-- Divisor -->
+        <div class="mt-6">
+          <div class="relative">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-gray-600"></div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+              <span class="px-2 bg-zinc-900 text-gray-400">ou</span>
+            </div>
+          </div>
+        </div>
+        <!-- Login com redes sociais
+        <div class="mt-6 grid grid-cols-2 gap-3">
+          <button
+            type="button"
+            class="
+              w-full inline-flex justify-center py-2 px-4 border border-white/20 rounded-lg
+              shadow-sm text-sm font-medium text-white bg-white/5 hover:bg-white/10
+              focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#18A2BD]/50
+              transition
+            "
+          >
+            <img
+              src="https://img.icons8.com/color/24/000000/google-logo.png"
+              class="w-5 h-5 mr-2"
+            >
+            Google
+          </button>
+          <button
+            type="button"
+            class="
+              w-full inline-flex justify-center py-2 px-4 border border-white/20 rounded-lg
+              shadow-sm text-sm font-medium text-white bg-white/5 hover:bg-white/10
+              focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#18A2BD]/50
+              transition
+            "
+          >
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              />
+            </svg>
+            GitHub
+          </button>
+        </div>
+        --> <!-- Link para login -->
+        <div class="mt-6 text-center text-sm text-gray-400 space-y-2">
+          <p>
+            Já tem uma conta?
+            <%= link_to "Faça login",
+            new_session_path(resource_name),
+            class:
+              "font-medium text-[#18A2BD] hover:text-[#84CC16] hover:underline transition" %>
+          </p>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+          <p>
+            Não recebeu o e-mail de confirmação?
+            <%= link_to "Reenviar instruções",
+            new_confirmation_path(resource_name),
+            class:
+              "font-medium text-[#18A2BD] hover:text-[#84CC16] hover:underline transition" %>
+          </p>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true, autocomplete: "name" %>
+          <p>
+            Sua conta foi bloqueada?
+            <%= link_to "Desbloquear acesso",
+            new_unlock_path(resource_name),
+            class:
+              "font-medium text-[#18A2BD] hover:text-[#84CC16] hover:underline transition" %>
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</main>

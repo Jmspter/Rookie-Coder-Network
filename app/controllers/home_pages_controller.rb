@@ -63,13 +63,19 @@ class HomePagesController < ApplicationController
       nome: "Renata O. Aguia",
       description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
       image: "friends/reh.png",
-      social_links: nil
+      social_links: [
+        { url: "https://www.linkedin.com/in/rehoaguiar/", icon: "icons/linkedin.svg" }
+      ]
     }
   ]
 
   def home_on; end
 
   def home_off; end
+
+  def privacy_policy; end
+
+  def terms_of_use; end
 
   def about
     @friends = FRIENDS.map { |friend| OpenStruct.new(friend) }
