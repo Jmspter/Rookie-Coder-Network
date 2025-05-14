@@ -56,6 +56,8 @@ group :development do
   gem "web-console"
 
   gem 'letter_opener_web'
+
+  gem 'htmlbeautifier'
 end
 
 # Autenticação
@@ -78,7 +80,5 @@ gem 'rails-i18n', '~> 8.0.0'
 gem "prawn", "~> 2.5"
 
 gem "prawn-table", "~> 0.2.2"
-
-gem "erb-formatter", "~> 0.7.3"
 
 gem "dockerfile-rails", ">= 1.7", group: :development

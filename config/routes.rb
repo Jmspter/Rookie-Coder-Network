@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :articles, only: [:new, :create, :edit, :update, :destroy]
   #Pagina Sobre
   get 'sobre' => "home_pages#about", as: :about
 

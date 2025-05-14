@@ -69,7 +69,9 @@ class HomePagesController < ApplicationController
     }
   ]
 
-  def home_on; end
+  def home_on 
+    @articles = Article.all
+  end
 
   def home_off; end
 

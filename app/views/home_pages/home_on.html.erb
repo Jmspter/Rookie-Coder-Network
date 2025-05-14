@@ -1,141 +1,225 @@
 <% provide(:title, "Pagina Principal") %>
 <main class="bg-bg-dark text-white px-4 sm:px-6 md:px-12 py-8 min-h-screen">
   <section class="max-w-[1500px] mx-auto">
-    <!-- Título  -->
-    <h1 class="text-3xl sm:text-4xl font-bold mb-6 text-center sm:text-left animate-fade-in-down">
-      Conheça <span class="text-highlight bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-lime-500">nossos cursos</span>!
+    <!-- Título -->
+    <h1
+      class="
+        text-3xl sm:text-4xl font-bold mb-6 text-center sm:text-left
+        animate-fade-in-down
+      "
+    >
+      Conheça
+      <span
+        class="
+          text-highlight bg-clip-text text-transparent bg-gradient-to-r from-green-500
+          to-lime-500
+        "
+      >nossos cursos</span>!
     </h1>
-    
     <!-- Busca -->
     <%= render partial: "courses/search_form" %>
-
     <!-- Banner com Glassmorphism -->
-  <section class="relative overflow-hidden rounded-2xl p-8 sm:p-10 text-center mb-12 backdrop-blur-lg bg-gradient-to-br from-white/10 to-white/5 border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-500 animate-fade-in-down delay-200">
-    <!-- Decorações de fundo -->
-    <div class="absolute -top-20 -right-20 w-40 h-40 bg-[#9732D4]/20 rounded-full blur-xl"></div>
-    <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-[#84CC16]/20 rounded-full blur-xl"></div>
+    <section
+      class="
+        relative overflow-hidden rounded-2xl p-8 sm:p-10 text-center mb-12
+        backdrop-blur-lg bg-gradient-to-br from-white/10 to-white/5 border
+        border-white/10 shadow-xl hover:shadow-2xl transition-all duration-500
+        animate-fade-in-down delay-200
+      "
+    >
+      <!-- Decorações de fundo -->
+      <div
+        class="
+          absolute -top-20 -right-20 w-40 h-40 bg-[#9732D4]/20 rounded-full blur-xl
+        "
+      ></div>
+      <div
+        class="
+          absolute -bottom-10 -left-10 w-32 h-32 bg-[#84CC16]/20 rounded-full blur-xl
+        "
+      ></div>
+      <!-- Swiper Carrossel -->
+      <% if @articles.any? %>
+        <div class="swiper mySwiper-destaques">
+          <div class="swiper-wrapper">
+            <% @articles.each do |article| %>
+              <div class="swiper-slide px-2">
+                <article class="relative z-10">
+                  <h2 class="text-2xl sm:text-3xl font-bold mb-4">
+                    <span class="text-highlight"><%= article.subject %></span><br>
+                    <%= article.title %>
+                  </h2>
+                  <p class="text-gray-300 mb-6 max-w-2xl mx-auto">
+                    <%= article.subtitle %>
+                  </p>
 
-    <!-- Swiper Carrossel -->
-    <div class="swiper mySwiper-destaques">
-      <div class="swiper-wrapper">
-        
-        <!-- Slide 1 -->
-        <div class="swiper-slide px-2">
-          <article class="relative z-10">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-4">
-              <span class="text-highlight">Destaque da semana:</span><br>
-              Curso de Ruby on Rails com 100% OFF!
-            </h2>
-            <p class="text-gray-300 mb-6 max-w-2xl mx-auto">
-              Aproveite esta promoção exclusiva para dominar uma das frameworks mais poderosas do mercado.
-            </p>
-            <button class="relative inline-flex items-center px-8 py-3 text-lg font-semibold text-white bg-highlight rounded-full overflow-hidden group transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-highlight/50">
-              <span class="absolute right-0 w-8 h-32 -mt-12 bg-white opacity-10 rotate-12 transform translate-x-12 group-hover:-translate-x-40 transition-all duration-1000"></span>
-              <span class="relative flex items-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
-                </svg>
-                Quero aproveitar!
-              </span>
-            </button>
-          </article>
-        </div>
+                  <button
+                    class="
+                      relative inline-flex items-center px-8 py-3 text-lg font-semibold text-white
+                      bg-highlight rounded-full overflow-hidden group transition-transform
+                      duration-300 hover:scale-105 focus:outline-none focus:ring-4
+                      focus:ring-highlight/50
+                    "
+                  >
+                    <span
+                      class="
+                        absolute right-0 w-8 h-32 -mt-12 bg-white opacity-10 rotate-12 transform
+                        translate-x-12 group-hover:-translate-x-40 transition-all duration-1000
+                      "
+                    ></span>
+                    <span class="relative flex items-center gap-2">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                        />
+                      </svg>
+                      <%= article.button %>
+                    </span>
+                  </button>
 
-        <!-- Slide 2 -->
-        <div class="swiper-slide px-2">
-          <article class="relative z-10">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-4">
-              <span class="text-highlight">ROOKIE CODER NETWORK na Campus Party!</span><br>
-              Campus Party + ROOKIE CODER NETWORK = Desconto!
-            </h2>
-            <p class="text-gray-300 mb-6 max-w-2xl mx-auto">
-              Encontre a gente na Campus Party e use <span class="text-highlight">#ROOKIECODERNETWORK</span> para um desconto especial!
-            </p>
-            <a href="https://brasil.campus-party.org/cpbr17/ingressos/" target="_blank">
-            <button class="relative inline-flex items-center px-8 py-3 text-lg font-semibold text-white bg-highlight rounded-full overflow-hidden group transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-highlight/50">
-              <span class="absolute right-0 w-8 h-32 -mt-12 bg-white opacity-10 rotate-12 transform translate-x-12 group-hover:-translate-x-40 transition-all duration-1000"></span>
-              <span class="relative flex items-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
-                </svg>
-                Aproveite Agora!
-              </span>
-            </button>
-            </a>
-          </article>
-        </div>
-
-      </div>
-
-      <!-- Paginação -->
-      <div class="swiper-pagination-destaques flex justify-center gap-1 mt-6 relative z-10"></div>
-      <!-- auto play -->
-      <div class="autoplay-progress">
-        <svg viewBox="0 0 48 48">
-          <circle cx="24" cy="24" r="20"></circle>
-        </svg>
-        <span></span>
-      </div>
-    </div>
-  </section>
-
-
-    <!-- Cursos com carrossel  -->
-    <% @modalities.each do |modality| %>
-    <section class="mb-16 animate-fade-in-up delay-<%= 300 + (modality.id * 100) %>">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-xl sm:text-2xl font-bold flex items-center gap-3">
-          <span class="w-3 h-3 rounded-full bg-highlight"></span>
-          <%= modality.name %>
-        </h2>
-        <div class="flex gap-2">
-          <!-- Adicione um ID único baseado no modality.id -->
-          <button class="swiper-button-prev-<%= modality.id %> p-2 rounded-full bg-white/10 hover:bg-white/20 transition">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-            </svg>
-          </button>
-          <button class="swiper-button-next-<%= modality.id %> p-2 rounded-full bg-white/10 hover:bg-white/20 transition">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-      
-      <div class="swiper mySwiper-<%= modality.id %>">
-        <div class="swiper-wrapper pb-8">
-          <% if modality.courses.any? %>
-            <% modality.courses.each do |course| %>
-              <div class="swiper-slide">
-                <%= link_to course_path(course), class: "block group" do %>
-                  <div class="relative w-[360px] h-[228px] rounded-xl overflow-hidden bg-gradient-to-br from-white/5 to-white/10 border border-white/10 shadow-md backdrop-blur-md flex flex-col">
-                    <!-- Imagem do curso (placeholder) -->
-                    <div class="h-3/5 flex items-center justify-center" style="background: linear-gradient(to right, #<%= "%06x" % (rand * 0xffffff) %>, #<%= "%06x" % (rand * 0xffffff) %>)">
+                  <% if current_user.admin? %>
+                    <div class="mt-4 flex justify-center gap-2">
+                      <%= link_to "Edit",
+                      edit_article_path(article),
+                      class:
+                        "px-4 py-2 bg-yellow-500 hover:bg-yellow-400 text-white font-medium rounded-md" %>
+                      <%= button_to "Delete",
+                      article_path(article),
+                      method: :delete,
+                      data: {
+                        turbo_confirm: "Are you sure?",
+                      },
+                      form_class: "inline",
+                      class: "px-4 py-2 bg-red-600 hover:bg-red-500 text-white font-medium rounded-md" %>
                     </div>
-
-                    <div class="p-4 flex-1 flex flex-col">
-                      <h3 class="font-bold text-lg mb-1"><%= course.name %></h3>
-                      <p class="text-sm text-gray-400 line-clamp-2"><%= course.description %></p>
-                      <div class="mt-auto flex justify-between items-center text-sm text-gray-300">
-                        <span class="text-highlight font-bold"><%= course.media.count %> Aulas</span>
-                        <span class="text-xs bg-white/10 px-2 py-1 rounded"><%= course.modality.name %></span>
-                      </div>
-                    </div>
-                  </div>
-                <% end %>
+                  <% end %>
+                </article>
               </div>
             <% end %>
-          <% else %>
-            <div class="w-full py-10 text-center bg-white/5 rounded-xl border border-dashed border-white/10">
-              <p class="text-gray-400">Nenhum curso cadastrado nesta modalidade.</p>
-              <button class="mt-3 text-highlight hover:underline">Sugerir curso</button>
-            </div>
-          <% end %>
+          </div>
+          <!-- Paginação -->
+          <div
+            class="
+              swiper-pagination-destaques flex justify-center gap-1 mt-6 relative z-10
+            "
+          ></div>
+          <!-- auto play -->
+          <div class="autoplay-progress">
+            <svg viewBox="0 0 48 48">
+              <circle cx="24" cy="24" r="20"></circle>
+            </svg>
+            <span></span>
+          </div>
         </div>
-        <div class="swiper-pagination-<%= modality.id %>"></div>
-      </div>
+      <% end %>
+
+      <% if current_user.admin? %>
+        <div class="mt-8">
+          <%= link_to "New article",
+          new_article_path,
+          class:
+            "rounded-md px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium inline-block" %>
+        </div>
+      <% end %>
     </section>
+    <!-- Cursos com carrossel -->
+    <% @modalities.each do |modality| %>
+      <section
+        class="
+          mb-16 animate-fade-in-up delay-<%= 300 + (modality.id * 100) %>
+        "
+      >
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xl sm:text-2xl font-bold flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-highlight"></span>
+            <%= modality.name %>
+          </h2>
+          <div class="flex gap-2">
+            <!-- Adicione um ID único baseado no modality.id -->
+            <button
+              class="
+                swiper-button-prev-<%= modality.id %> p-2 rounded-full
+                bg-white/10 hover:bg-white/20 transition
+              "
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+            <button
+              class="
+                swiper-button-next-<%= modality.id %> p-2 rounded-full
+                bg-white/10 hover:bg-white/20 transition
+              "
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="swiper mySwiper-<%= modality.id %>">
+          <div class="swiper-wrapper pb-8">
+            <% if modality.courses.any? %>
+              <% modality.courses.each do |course| %>
+                <div class="swiper-slide">
+                  <%= link_to course_path(course), class: "block group" do %>
+                    <div
+                      class="
+                        relative w-[360px] h-[228px] rounded-xl overflow-hidden bg-gradient-to-br
+                        from-white/5 to-white/10 border border-white/10 shadow-md backdrop-blur-md flex
+                        flex-col
+                      "
+                    >
+                      <!-- Imagem do curso (placeholder) -->
+                      <div
+                        class="h-3/5 flex items-center justify-center"
+                        style="background: linear-gradient(to right, #<%= "%06x" % (rand * 0xffffff) %>, #<%= "%06x" % (rand * 0xffffff) %>)"
+                      >
+                      </div>
+
+                      <div class="p-4 flex-1 flex flex-col">
+                        <h3 class="font-bold text-lg mb-1"><%= course.name %></h3>
+                        <p class="text-sm text-gray-400 line-clamp-2"><%= course.description %></p>
+                        <div class="mt-auto flex justify-between items-center text-sm text-gray-300">
+                          <span class="text-highlight font-bold"><%= course.media.count %>
+                            Aulas</span>
+                          <span class="text-xs bg-white/10 px-2 py-1 rounded"><%= course.modality.name %></span>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            <% else %>
+              <div
+                class="
+                  w-full py-10 text-center bg-white/5 rounded-xl border border-dashed
+                  border-white/10
+                "
+              >
+                <p class="text-gray-400">Nenhum curso cadastrado nesta modalidade.</p>
+                <button class="mt-3 text-highlight hover:underline">Sugerir curso</button>
+              </div>
+            <% end %>
+          </div>
+          <div class="swiper-pagination-<%= modality.id %>"></div>
+        </div>
+      </section>
     <% end %>
   </section>
 </main>
