@@ -52,15 +52,13 @@
                   <p class="text-gray-300 mb-6 max-w-2xl mx-auto">
                     <%= article.subtitle %>
                   </p>
-
-                  <button
-                    class="
-                      relative inline-flex items-center px-8 py-3 text-lg font-semibold text-white
-                      bg-highlight rounded-full overflow-hidden group transition-transform
-                      duration-300 hover:scale-105 focus:outline-none focus:ring-4
-                      focus:ring-highlight/50
-                    "
-                  >
+                  
+                  <%= link_to article.button_link, class: "
+                    relative inline-flex items-center px-8 py-3 text-lg font-semibold text-white
+                    bg-highlight rounded-full overflow-hidden group transition-transform
+                    duration-300 hover:scale-105 focus:outline-none focus:ring-4
+                    focus:ring-highlight/50
+                  " do %>
                     <span
                       class="
                         absolute right-0 w-8 h-32 -mt-12 bg-white opacity-10 rotate-12 transform
@@ -78,7 +76,7 @@
                       </svg>
                       <%= article.button %>
                     </span>
-                  </button>
+                  <% end %>
 
                   <% if current_user.admin? %>
                     <div class="mt-4 flex justify-center gap-2">

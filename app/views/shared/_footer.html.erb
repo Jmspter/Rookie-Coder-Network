@@ -9,6 +9,10 @@
       </div>
       <% end %>
 
+      <%= render 'shared/advertisement' %>
+      <button id="installApp" hidden>Instalar App</button>
+
+
       <!-- Links de navegação -->
       <nav class="flex flex-wrap justify-center gap-6 md:gap-8">
         <%= link_to "About", about_path, class: "hover:text-purple-300 transition-colors duration-200" %>
@@ -21,7 +25,7 @@
       <div class="flex-shrink-0">
         <p class="mb-2 text-center md:text-right">Nossas redes</p>
         <div class="flex justify-center md:justify-end gap-3">
-          <%= link_to "#", class: "hover:opacity-80 transition-opacity" do %>
+          <%= link_to "https://www.instagram.com/rookiecoder.nw?igsh=emNzcTAyY3hnbzF0", class: "hover:opacity-80 transition-opacity" do %>
             <%= image_tag "icons/instagram.svg", alt: "Instagram", class: "w-8 h-8 rounded-full bg-white p-1" %>
           <% end %>
           <%= link_to "#", class: "hover:opacity-80 transition-opacity" do %>

@@ -1,6 +1,11 @@
-<% content_for :title, "New article" %>
-<div class="md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">New article</h1>
+<% content_for :title, "Novo artigo" %>
+
+<div class="max-w-2xl w-full mx-auto my-5">
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="text-2xl font-bold text-gray-100">Novo artigo</h1>
+    
+    <%= link_to "Voltar", root_path, class: "px-4 py-2 text-sm rounded bg-gray-700 hover:bg-gray-600 text-gray-200" %>
+  </div>
+
   <%= render "form", article: @article %>
-  <%= link_to "Back to articles", articles_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
 </div>
