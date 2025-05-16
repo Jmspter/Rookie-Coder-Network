@@ -1,0 +1,146 @@
+/* Editor principal */
+trix-editor {
+  border: 1px solid #4b5563;
+  border-radius: 0.375rem;
+  margin: 0;
+  padding: 0.75rem;
+  min-height: 10rem;
+  outline: none;
+  background-color: #1f2937;
+  color: #e5e7eb;
+}
+
+/* Barra de ferramentas */
+trix-toolbar {
+  background-color: #111827;
+  border: 1px solid #374151;
+  border-radius: 0.375rem 0.375rem 0 0;
+  padding: 0.5rem;
+}
+
+/* Grupos de botões */
+trix-toolbar .trix-button-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  overflow-x: auto;
+  gap: 0.5rem;
+}
+
+trix-toolbar .trix-button-group {
+  display: flex;
+  margin-bottom: 0;
+  border: 1px solid #374151;
+  border-radius: 0.25rem;
+  background-color: #1f2937;
+}
+
+/* Botões individuais */
+trix-toolbar .trix-button {
+  color: #9ca3af;
+  background-color: transparent;
+  border: none;
+  border-right: 1px solid #374151;
+  font-size: 0.85rem;
+}
+
+trix-toolbar .trix-button:last-child {
+  border-right: none;
+}
+
+trix-toolbar .trix-button:not(:disabled):hover {
+  background-color: #374151;
+  color: #e5e7eb;
+}
+
+trix-toolbar .trix-button.trix-active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+trix-toolbar .trix-button:disabled {
+  color: #4b5563;
+  opacity: 0.5;
+}
+
+/* Ícones SVG - substituir por versões brancas */
+trix-toolbar .trix-button--icon::before {
+  filter: invert(90%);
+  opacity: 0.8;
+}
+
+trix-toolbar .trix-button.trix-active .trix-button--icon::before,
+trix-toolbar .trix-button:not(:disabled):hover .trix-button--icon::before {
+  opacity: 1;
+  filter: invert(100%);
+}
+
+/* Diálogos modais */
+trix-toolbar .trix-dialog {
+  background-color: #1f2937;
+  border: 1px solid #3b82f6;
+  box-shadow: 0 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+trix-toolbar .trix-input--dialog {
+  background-color: #111827;
+  border: 1px solid #4b5563;
+  color: #e5e7eb;
+}
+
+/* Conteúdo renderizado */
+.trix-content {
+  color: #e5e7eb;
+  line-height: 1.6;
+}
+
+.trix-content blockquote {
+  border-left-color: #3b82f6;
+  color: #9ca3af;
+}
+
+.trix-content pre {
+  background-color: #111827;
+  color: #e5e7eb;
+  border: 1px solid #374151;
+}
+
+.trix-content .attachment--file {
+  background-color: #111827;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+.trix-content .attachment--preview .attachment__caption {
+  color: #9ca3af;
+}
+
+/* Anexos no editor */
+trix-editor .attachment {
+  background-color: #111827;
+}
+
+trix-editor .attachment__progress {
+  background-color: #3b82f6;
+}
+
+trix-editor .attachment__toolbar {
+  background-color: #1f2937;
+  border: 1px solid #3b82f6;
+}
+
+trix-editor .trix-button--remove {
+  background-color: #ef4444;
+  border-color: #ef4444;
+  color: white;
+}
+
+/* Destaques e seleção */
+trix-editor [data-trix-mutable].attachment.attachment--file,
+trix-editor [data-trix-mutable].attachment img {
+  box-shadow: 0 0 0 2px #3b82f6;
+}
+
+trix-editor .attachment__caption-editor:focus {
+  background-color: #374151;
+}

@@ -9,3 +9,5 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "pdfjs-dist", to: "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.1.91/pdf.min.js"
 pin "pdfjs", to: "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.1.91/pdf.min.js"
 
+pin "trix"
+pin "@rails/actiontext", to: "actiontext.esm.js"

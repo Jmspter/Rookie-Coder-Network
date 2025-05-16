@@ -192,3 +192,6 @@ installButton.addEventListener('click', async () => {
     installButton.hidden = true;
   }
 });
+
+import "trix"
+import "@rails/actiontext"
