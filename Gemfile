@@ -72,7 +72,7 @@ gem "tailwindcss-ruby", "~> 4.1"
 gem "tailwindcss-rails", "~> 4.2"
 
 #Tradução para pt-br
-gem "devise-i18n", "~> 1.13"
+gem "devise-i18n", "~> 1.14"
 
 gem 'rails-i18n', '~> 8.0.0'
 
