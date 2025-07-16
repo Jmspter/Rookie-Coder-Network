@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :set_modality, only: [:new, :create]
-  before_action :require_admin, except: [:show, :index, :certificate]
+  before_action :require_admin, except: [:show, :index, :certificate, :favorites]
 
   def index
     if params[:q].present?
@@ -75,6 +75,6 @@ class CoursesController < ApplicationController
     end
 
     def course_params
-      params.require(:course).permit(:name, :description)
+      params.require(:course).permit(:name, :description, :image)
     end
 end

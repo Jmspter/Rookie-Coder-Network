@@ -9,6 +9,8 @@ class Course < ApplicationRecord
   validates :name, presence: true
   validates :modality, presence: true
 
+  has_one_attached :image
+
   def progress_for(user)
     total_media = media.count
     return 0 if total_media.zero?

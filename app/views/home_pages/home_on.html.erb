@@ -185,10 +185,16 @@
                       "
                     >
                       <!-- Imagem do curso (placeholder) -->
-                      <div
-                        class="h-3/5 flex items-center justify-center"
-                        style="background: linear-gradient(to right, #<%= "%06x" % (rand * 0xffffff) %>, #<%= "%06x" % (rand * 0xffffff) %>)"
-                      >
+                      <div class="h-3/5 flex items-center justify-center overflow-hidden">
+                        <% if course.image.attached? %>
+                          <%= image_tag course.image.variant(resize_to_fill: [800, 400]), class: "w-full h-full object-cover" %>
+                        <% else %>
+                          <!-- Fallback: gradiente aleatório se não houver imagem -->
+                          <div 
+                            class="w-full h-full" 
+                            style="background: linear-gradient(to right, #<%= "%06x" % (rand * 0xffffff) %>, #<%= "%06x" % (rand * 0xffffff) %>)">
+                          </div>
+                        <% end %>
                       </div>
 
                       <div class="p-4 flex-1 flex flex-col">
